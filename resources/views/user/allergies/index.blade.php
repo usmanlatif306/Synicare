@@ -6,8 +6,10 @@
         <div class="card-header d-flex justify-content-between align-items-center">
             <h4>Allergies</h4>
             <div class="">
-            <a class="btn btn-sm btn-primary mr-3" href="{{route('user.medications.create')}}">Add Medicatons</a>
-            <a class="btn btn-sm btn-primary" href="{{route('user.allergies.create')}}">Add Allergy</a>
+                @if(auth()->user()->allergies()->count() > 0)
+                <a class="btn btn-sm btn-primary mr-3" href="{{route('user.medications.create')}}">Add Medicatons</a>
+                @endif
+                <a class="btn btn-sm btn-primary" href="{{route('user.allergies.create')}}">Add Allergy</a>
             </div>
         </div>
         <div class="card-body">

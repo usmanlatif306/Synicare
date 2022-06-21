@@ -7,8 +7,10 @@
             <!-- <h4>Allergy Details</h4> -->
             <h4>{{$allergy->allergies}}</h4>
             <div class="">
-            <a class="btn btn-sm btn-primary" href="{{route('user.medications.create')}}">Add Medication</a>
-            <a class="btn btn-sm btn-primary ml-3" href="{{route('user.allergies.index')}}">Back</a>
+                @if(auth()->user()->allergies()->count() > 0)
+                <a class="btn btn-sm btn-primary mr-3" href="{{route('user.medications.create')}}">Add Medicatons</a>
+                @endif
+                <a class="btn btn-sm btn-primary ml-3" href="{{route('user.allergies.index')}}">Back</a>
             </div>
         </div>
         <div class="card-body">
@@ -45,18 +47,12 @@
                                     <td>{{$item->updated_at->format('d-m-Y H:i:s')}}</td>
                                     <td>
                                         <div class="d-flex">
-                                            <a
-                                                href="{{ auth()->user()->role_id == 1 ? route('admin.medications.show',$item->id) : route('user.medications.show',$item->id)}}">
-                                                <span class="text-primary cursor-pointer font-m mr-3"
-                                                    title="View Medication"><i class="fas fa-eye"></i></span>
+                                            <a href="{{ auth()->user()->role_id == 1 ? route('admin.medications.show',$item->id) : route('user.medications.show',$item->id)}}">
+                                                <span class="text-primary cursor-pointer font-m mr-3" title="View Medication"><i class="fas fa-eye"></i></span>
                                             </a>
 
-                                            <a href="{{ auth()->user()->role_id == 1 ? route('admin.medications.edit',$item->id) : route('user.medications.edit',$item->id)}}"
-                                                class="text-primary cursor-pointer font-m mr-3"
-                                                title="Edit Medication"><i class=" fas fa-edit"></i></a>
-                                            <form id="deleteMedication-{{$item->id}}"
-                                                action="{{ auth()->user()->role_id == 1 ? route('admin.allergies.medications.destroy',$item->id): route('user.medications.destroy',$item->id) }}"
-                                                method="POST">
+                                            <a href="{{ auth()->user()->role_id == 1 ? route('admin.medications.edit',$item->id) : route('user.medications.edit',$item->id)}}" class="text-primary cursor-pointer font-m mr-3" title="Edit Medication"><i class=" fas fa-edit"></i></a>
+                                            <form id="deleteMedication-{{$item->id}}" action="{{ auth()->user()->role_id == 1 ? route('admin.allergies.medications.destroy',$item->id): route('user.medications.destroy',$item->id) }}" method="POST">
                                                 @csrf
                                                 @method('delete')
                                                 <span class="text-danger cursor-pointer font-m" onclick="if (confirm('Are you Sure?') == true) {
