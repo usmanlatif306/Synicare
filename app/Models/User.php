@@ -44,9 +44,9 @@ class User extends Authenticatable
     ];
 
     // user allergies
-    public function allergies()
+    public function allergy()
     {
-        return $this->hasMany(Allergy::class)->latest();
+        return $this->hasOne(Allergy::class)->latest();
     }
 
     // // user medictions

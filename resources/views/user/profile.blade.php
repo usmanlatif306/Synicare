@@ -14,8 +14,7 @@
                         {{ session('image') }}
                     </div>
                     @endif
-                    <img src="{{auth()->user()->image ? url('/').'/'.auth()->user()->image:asset('storage/images/user.jpg')}}"
-                        alt="User Image" class="img-fluid">
+                    <img src="{{auth()->user()->image ? url('/').'/'.auth()->user()->image:asset('storage/images/user.jpg')}}" alt="User Image" class="img-fluid">
                     <form class="mt-3" action="{{route('profile.image')}}" method="POST" enctype="multipart/form-data">
                         @csrf
                         <div class="form-group">
@@ -48,9 +47,7 @@
                         @csrf
                         <div class="form-group">
                             <label for="name">Name</label>
-                            <input id="name" type="text" name="name"
-                                class="form-control @error('name') is-invalid @enderror" placeholder="Name"
-                                value="{{auth()->user()->name ?? old('name')}}">
+                            <input id="name" type="text" name="name" class="form-control @error('name') is-invalid @enderror" placeholder="Name" value="{{auth()->user()->name ?? old('name')}}">
                             @error('name')
                             <span class="invalid-feedback" role="alert">
                                 <strong>{{ $message }}</strong>
@@ -59,10 +56,7 @@
                         </div>
                         <div class="form-group">
                             <label for="date_of_birth">Date of Birth</label>
-                            <input id="date_of_birth" type="date" name="date_of_birth"
-                                class="form-control @error('date_of_birth') is-invalid @enderror"
-                                placeholder="Blood Group"
-                                value="{{auth()->user()->date_of_birth ? auth()->user()->date_of_birth->format('Y-m-d') : old('date_of_birth')}}">
+                            <input id="date_of_birth" type="date" name="date_of_birth" class="form-control @error('date_of_birth') is-invalid @enderror" placeholder="Blood Group" value="{{auth()->user()->date_of_birth ? auth()->user()->date_of_birth->format('Y-m-d') : old('date_of_birth')}}">
                             @error('date_of_birth')
                             <span class="invalid-feedback" role="alert">
                                 <strong>{{ $message }}</strong>
@@ -71,9 +65,7 @@
                         </div>
                         <div class="form-group">
                             <label for="phone">Phone</label>
-                            <input id="phone" type="text" name="phone"
-                                class="form-control @error('Phone') is-invalid @enderror" placeholder="Phone"
-                                value="{{auth()->user()->phone ?? old('phone')}}">
+                            <input id="phone" type="text" name="phone" class="form-control @error('phone') is-invalid @enderror" placeholder="Phone" value="{{auth()->user()->phone ?? old('phone')}}">
                             @error('phone')
                             <span class="invalid-feedback" role="alert">
                                 <strong>{{ $message }}</strong>
@@ -83,9 +75,7 @@
 
                         <div class="form-group">
                             <label for="address">Address</label>
-                            <input id="address" type="text" name="address"
-                                class="form-control @error('address') is-invalid @enderror" placeholder="Name"
-                                value="{{auth()->user()->address ?? old('address')}}">
+                            <input id="address" type="text" name="address" class="form-control @error('address') is-invalid @enderror" placeholder="Name" value="{{auth()->user()->address ?? old('address')}}">
                             @error('address')
                             <span class="invalid-feedback" role="alert">
                                 <strong>{{ $message }}</strong>
@@ -117,9 +107,7 @@
                         @csrf
                         <div class="form-group">
                             <label for="old_password">Old Password</label>
-                            <input id="old_password" type="password" name="old_password"
-                                class="form-control @error('old_password') is-invalid @enderror"
-                                placeholder="Old Password">
+                            <input id="old_password" type="password" name="old_password" class="form-control @error('old_password') is-invalid @enderror" placeholder="Old Password">
                             @error('old_password')
                             <span class="invalid-feedback" role="alert">
                                 <strong>{{ $message }}</strong>
@@ -128,8 +116,7 @@
                         </div>
                         <div class="form-group">
                             <label for="password">New Password</label>
-                            <input id="password" type="password" name="password"
-                                class="form-control @error('password') is-invalid @enderror" placeholder="Password">
+                            <input id="password" type="password" name="password" class="form-control @error('password') is-invalid @enderror" placeholder="Password">
                             @error('password')
                             <span class="invalid-feedback" role="alert">
                                 <strong>{{ $message }}</strong>
@@ -138,8 +125,7 @@
                         </div>
                         <div class="form-group">
                             <label for="password">Confirm Password</label>
-                            <input id="password_confirmation" type="password" name="password_confirmation"
-                                class="form-control" placeholder="Confirm Password">
+                            <input id="password_confirmation" type="password" name="password_confirmation" class="form-control" placeholder="Confirm Password">
                         </div>
                         <button type=" submit" class="btn btn-primary">Update Password</button>
                     </form>

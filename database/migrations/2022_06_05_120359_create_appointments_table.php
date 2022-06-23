@@ -16,8 +16,8 @@ class CreateAppointmentsTable extends Migration
         Schema::create('appointments', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->constrained();
-            $table->string('consultant');
-            $table->string('details');
+            $table->string('consultant')->nullable();
+            $table->string('details')->nullable();
             $table->timestamp('due');
             $table->boolean('is_reminded')->default(false);
             $table->timestamps();

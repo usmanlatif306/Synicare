@@ -1,6 +1,6 @@
 <template>
     <div class="mt-2">
-        <Calendar :attributes="attributes" />
+        <Calendar :attributes="attributes" v-model="date" />
         <!-- <DatePicker v-model="date" /> -->
     </div>
 </template>
@@ -14,6 +14,11 @@ export default {
         DatePicker,
     },
     props: ["appointments"],
+    data() {
+        return {
+            date: new Date(),
+        };
+    },
     computed: {
         attributes() {
             return [

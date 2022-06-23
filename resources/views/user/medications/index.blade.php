@@ -5,7 +5,13 @@
     <div class="card">
         <div class="card-header d-flex justify-content-between align-items-center">
             <h4>Medications</h4>
-            <a class="btn btn-sm btn-primary" href="{{route('user.medications.create')}}">Add New</a>
+            <div class="">
+                @if(auth()->user()->allergy)
+                <a class="btn btn-sm btn-primary mr-3" href="{{route('user.medications.create')}}">Add Medicatons</a>
+                @else
+                <a class="btn btn-sm btn-primary" href="{{route('user.allergies.create')}}">Add Allergy</a>
+                @endif
+            </div>
         </div>
         <div class="card-body">
             <div class="row">
@@ -21,7 +27,29 @@
                         {{ session('success') }}
                     </div>
                     @endif
+                    @if(auth()->user()->allergy)
+                    <div class="row">
+                        <div class="col-12 mt-3 text-center">
+                            <h4 class="text-center">Allergies: </h4>
+                            <p style="font-size: 16px;">
+                                <a class="text-black" href="{{route('user.allergies.edit',auth()->user()->allergy->id)}}">
+                                    {{ auth()->user()->allergy->allergies}}
+                                </a>
+                            </p>
+                        </div>
+                        <div class=" col-12">
+                            <h4 class="text-center">My Home Medications List</h4>
+                        </div>
+                    </div>
                     @livewire('user-medication')
+                    @else
+                    <div class="row">
+                        <div class="col-12">
+                            <h4 class="text-center">Kindly create allergy first</h4>
+                        </div>
+                    </div>
+                    @endif
+
                 </div>
             </div>
         </div>

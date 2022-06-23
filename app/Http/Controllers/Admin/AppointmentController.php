@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\AppointmentRequest;
 use App\Models\Appointment;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class AppointmentController extends Controller
@@ -48,9 +49,11 @@ class AppointmentController extends Controller
      * @param  \App\Models\Appointment  $appointment
      * @return \Illuminate\Http\Response
      */
-    public function show(Appointment $appointment)
+    public function show($id)
     {
-        return view('admin.appointments.show', compact('appointment'));
+        $user = User::find($id);
+        $appointments = $user->appointments()->paginate(10);
+        return view('admin.appointments.show', compact('appointments', 'user'));
     }
 
     /**

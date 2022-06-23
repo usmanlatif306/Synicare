@@ -15,8 +15,7 @@ class AllergyController extends Controller
     public function index()
     {
         $subscription = auth()->user()->subscription;
-        $allergies = auth()->user()->allergies()->paginate(10);
-        return view('user.allergies.index', compact('allergies', 'subscription'));
+        return view('user.allergies.index', compact('subscription'));
     }
 
     /**
@@ -41,7 +40,7 @@ class AllergyController extends Controller
             'allergies' => ['required', 'string']
         ]);
 
-        auth()->user()->allergies()->create($request->only('allergies'));
+        auth()->user()->allergy()->create($request->only('allergies'));
 
         return redirect()->route('user.allergies.index')->with('success', 'Allergy created successfully!');
     }

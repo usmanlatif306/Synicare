@@ -13,9 +13,10 @@
                     @if(auth()->user()->role_id == 1)
                     <th scope="col">User</th>
                     <th scope="col">Phone</th>
-                    @endif
+                    @else
                     <th scope="col">Consultant</th>
                     <th scope="col">Due</th>
+                    @endif
                     <th scope="col"></th>
                 </tr>
             </thead>
@@ -24,30 +25,30 @@
                 <tr>
                     <th scope="row">{{$loop->iteration}}</th>
                     @if(auth()->user()->role_id == 1)
-                    <td>{{$item->user->name}}</td>
-                    <td>{{$item->user->phone}}</td>
-                    @endif
+                    <td>{{$item->name}}</td>
+                    <td>{{$item->phone}}</td>
+                    @else
                     <td>{{$item->consultant}}</td>
                     <td>{{$item->due}}</td>
+                    @endif
                     <td>
                         <div class="d-flex">
-                            <a href="{{ auth()->user()->role_id == 1 ? route('admin.appointments.edit',$item->id) : route('user.appointments.edit',$item->id)}}"
-                                class="text-primary cursor-pointer font-m mr-3" title="Edit Appointment"><i
-                                    class=" fas fa-edit"></i></a>
-                            <form id="deleteAppointment-{{$item->id}}"
-                                action="{{ auth()->user()->role_id == 1 ? route('admin.appointments.destroy',$item->id): route('user.appointments.destroy',$item->id) }}"
-                                method="POST">
+                            @if(auth()->user()->role_id == 1)
+                            <a href="{{ route('admin.appointments.show',$item->id)}}">
+                                <span class="text-primary cursor-pointer font-m mr-3" title="View Appointment"><i class="fas fa-eye"></i></span>
+                            </a>
+                            @else
+                            <a href="{{ auth()->user()->role_id == 1 ? route('admin.appointments.edit',$item->id) : route('user.appointments.edit',$item->id)}}" class="text-primary cursor-pointer font-m mr-3" title="Edit Appointment"><i class=" fas fa-edit"></i></a>
+                            <form id="deleteAppointment-{{$item->id}}" action="{{ auth()->user()->role_id == 1 ? route('admin.appointments.destroy',$item->id): route('user.appointments.destroy',$item->id) }}" method="POST">
                                 @csrf
                                 @method('delete')
                                 <span class="text-danger cursor-pointer font-m" onclick="if (confirm('Are you Sure?') == true) {
                                 document.getElementById('deleteAppointment-{{$item->id}}').submit();
                               }" title="Delete Appointment"><i class="fas fa-trash"></i></span>
                             </form>
+                            @endif
                         </div>
-
-
                     </td>
-
                 </tr>
                 @empty
                 <tr>

@@ -14,7 +14,7 @@
             </a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="{{route('admin.allergies.index')}}">
+            <a class="nav-link" href="{{route('admin.medications.index')}}">
                 <i class="icon-grid menu-icon"></i>
                 <span class="menu-title">Medications</span>
             </a>
@@ -39,12 +39,12 @@
         </li>
         @else
         <li class="nav-item">
-            <a class="nav-link" href="{{route('user.allergies.index')}}">
+            <a class="nav-link" href="{{route('user.medications.index')}}">
                 <i class="icon-grid menu-icon"></i>
                 <span class="menu-title">Medications</span>
             </a>
         </li>
-       
+
         <li class="nav-item">
             <a class="nav-link" href="{{route('user.appointments.index')}}">
                 <i class="icon-grid menu-icon"></i>
@@ -64,11 +64,11 @@
                 <span class="menu-title">Profile</span>
             </a>
         </li>
-        @if(auth()->user()->role_id != 1)
+        <!-- @if(auth()->user()->role_id != 1)
         <li id="calender" class="nav-item mt-3">
             <strong class="text-primary">My Next Appointments</strong>
             <calender :appointments="{{$appointments}}"></calender>
         </li>
-        @endif
+        @endif -->
     </ul>
 </nav>

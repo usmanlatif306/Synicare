@@ -42,9 +42,9 @@ class UserController extends Controller
     {
         $request->validate([
             'name' => ['required', 'string', 'max:255'],
-            'phone' => ['string', 'max:20'],
-            'address' => ['string'],
-            'date_of_birth' => ['date'],
+            'phone' => ['nullable', 'string', 'max:20'],
+            'address' => ['nullable', 'string'],
+            'date_of_birth' => ['nullable', 'date'],
         ]);
         auth()->user()->update($request->all());
         return redirect()->back()->with('success', 'User Profile Updated Successfully');

@@ -7,7 +7,7 @@
             <th colspan="2">
                 <div class="d-flex justify-content-between align-items-center">
                     <span style="font-size: 18px;">Medication Details</span>
-                    <a href="{{route('user.allergies.show',$medication->allergy->id)}}" class="btn btn-sm btn-primary">Back</a>
+                    <a href="{{route('user.medications.index')}}" class="btn btn-sm btn-primary">Back</a>
                 </div>
             </th>
         </thead>

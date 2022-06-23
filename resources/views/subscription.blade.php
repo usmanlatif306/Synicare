@@ -28,21 +28,16 @@
                     @endif
                     <span class="text-primary font-weight-bold">You will be charged
                         ${{env('SUBSCRIPTION_PRICE')}}</span>
-                    <form class="mt-3" action="{{route('subscription.save')}}" method="POST" id="paymentForm"
-                        data-cc-on-file="false" data-stripe-publishable-key="{{ env('STRIPE_KEY') }}">
+                    <form class="mt-3" action="{{route('subscription.save')}}" method="POST" id="paymentForm" data-cc-on-file="false" data-stripe-publishable-key="{{ env('STRIPE_KEY') }}">
                         @csrf
                         <input type="hidden" name="price" value="{{env('SUBSCRIPTION_PRICE')}}" />
                         <div class="form-group">
                             <label for="cardHolderName" class="font-weight-bold">Card Holder Name *</label>
-                            <input type="text" name="card_holder_name" class="form-control" id="cardHolderName"
-                                placeholder="Card Holder Name" />
+                            <input type="text" name="card_holder_name" class="form-control" id="cardHolderName" placeholder="Card Holder Name" />
                         </div>
                         <div class="form-group">
                             <label for="cardNumber" class="font-weight-bold">Credit Card Number *</label>
-                            <input
-                                oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
-                                type="number" class="form-control" id="cardNumber" placeholder="Credit Card Number"
-                                maxlength="16" />
+                            <input oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" type="number" class="form-control" id="cardNumber" placeholder="Credit Card Number" maxlength="16" />
                         </div>
                         <div class="form-row">
                             <div class="col-md-4">
@@ -78,10 +73,12 @@
 </div>
 @endsection
 @push('scripts')
+
 <script type="text/javascript" src="https://js.stripe.com/v2/"></script>
 <script>
-    $(document).ready(function () {
-        $("#paymentForm").submit(function (e) {
+    $(document).ready(function() {
+        $("#paymentForm").submit(function(e) {
+            e.preventDefault();
             $("#subscribe").attr("disabled", true);
             $("#subscribe").html("<i class='fas fa-circle-notch fa-spin'></i>");
             $('.error').addClass('d-none');
@@ -93,9 +90,8 @@
                 exp_month: $('#cardMonth').val(),
                 exp_year: $('#cardYear').val()
             }, stripeHandleResponse);
-
-
         });
+
         function stripeHandleResponse(status, response) {
             if (response.error) {
                 $('.error')

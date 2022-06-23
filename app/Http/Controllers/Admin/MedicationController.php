@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Allergy;
 use Illuminate\Http\Request;
 use App\Models\Medication;
+use App\Models\User;
 use App\Traits\ImageUpload;
 
 class MedicationController extends Controller
@@ -47,7 +48,7 @@ class MedicationController extends Controller
             'prescriber' => ['required', 'string'],
             'image' => ['image', 'mimes:jpeg,png,jpg,gif', 'max:5120'],
         ]);
-        $allergy = Allergy::find($request->allergy_id);
+        $allergy = auth()->user()->allergy;
         $medication = $allergy->medications()->create($request->all());
 
         // if user has image in medication
@@ -56,7 +57,7 @@ class MedicationController extends Controller
             $medication->update(['image' => $image]);
         }
 
-        return redirect()->route('admin.medications.index')->with('success', 'New Medication Created Successfully!');
+        return redirect()->route('admin.medications.show', auth()->id())->with('success', 'New Medication Created Successfully!');
     }
 
     /**
@@ -65,9 +66,16 @@ class MedicationController extends Controller
      * @param  \App\Models\Medication  $medication
      * @return \Illuminate\Http\Response
      */
-    public function show(Medication $medication)
+    public function show($id)
     {
-        return view('admin.medications.show', compact('medication'));
+        $allergy = User::find($id)->allergy;
+        $medications = $allergy->medications()->paginate(10);
+        return view('admin.medications.show', compact('allergy', 'medications'));
+    }
+
+    public function medicationShow(Medication $medication)
+    {
+        return view('admin.medications.view', compact('medication'));
     }
 
     /**
@@ -117,7 +125,8 @@ class MedicationController extends Controller
      */
     public function destroy(Medication $medication)
     {
+        $id = $medication->allergy->user->id;
         $medication->delete();
-        return redirect()->route('admin.medications.index')->with('success', 'Medication Deleted Successfully!');
+        return redirect()->route('admin.medications.show', $id)->with('success', 'Medication Deleted Successfully!');
     }
 }

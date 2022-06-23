@@ -5,7 +5,6 @@
     <div class="card">
         <div class="card-header d-flex justify-content-between align-items-center">
             <h4>Medications</h4>
-            <a class="btn btn-sm btn-primary" href="{{route('admin.medications.create')}}">Add New</a>
         </div>
         <div class="card-body">
             <div class="row">

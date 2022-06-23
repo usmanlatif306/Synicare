@@ -20,6 +20,7 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => 'admin'], f
     Route::resource('allergies', AllergyController::class);
 
     // admin medications routes
+    Route::get('medications/{medication}/show', [MedicationController::class, 'medicationShow'])->name('medications.view');
     Route::resource('medications', MedicationController::class);
 
     // admin appointments routes

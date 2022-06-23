@@ -18,8 +18,7 @@ class MedicationController extends Controller
     public function index()
     {
         $subscription = auth()->user()->subscription;
-        $medications = auth()->user()->medications()->paginate(10);
-        return view('user.medications.index', compact('medications', 'subscription'));
+        return view('user.medications.index', compact('subscription'));
     }
 
     /**
@@ -42,14 +41,14 @@ class MedicationController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'allergy_id' => ['required'],
             'medication' => ['required', 'string'],
             'doze' => ['required', 'string'],
             'frequency' => ['required', 'string'],
             'prescriber' => ['required', 'string'],
             'image' => ['image', 'mimes:jpeg,png,jpg,gif', 'max:5120'],
         ]);
-        $allergy = Allergy::find($request->allergy_id);
+        // $allergy = Allergy::find($request->allergy_id);
+        $allergy = auth()->user()->allergy;
         $medication = $allergy->medications()->create($request->all());
 
         // if user has image in medication
@@ -57,7 +56,7 @@ class MedicationController extends Controller
             $image = $this->UserImageUpload($request->image);
             $medication->update(['image' => $image]);
         }
-        return redirect()->route('user.allergies.show', $allergy->id)->with('success', 'New Medication Created Successfully!');
+        return redirect()->route('user.medications.index')->with('success', 'New Medication Created Successfully!');
     }
 
     /**
@@ -100,13 +99,10 @@ class MedicationController extends Controller
             'image' => ['image', 'mimes:jpeg,png,jpg,gif', 'max:5120'],
         ]);
         $medication->update($request->all());
-        $allergy = Allergy::find($request->allergy_id);
-        $allergy->touch();
         // if user has image in medication
         if ($request->has('image')) {
             $image = $this->UserImageUpload($request->image, $medication->image);
             $medication->update(['image' => $image]);
-            $allergy->touch();
         }
 
         return redirect()->back()->with('success', 'Medication Updated Successfully!');
@@ -118,9 +114,9 @@ class MedicationController extends Controller
      * @param  \App\Models\Medication  $medication
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Allergy $allergy, Medication $medication)
+    public function destroy(Medication $medication)
     {
         $medication->delete();
-        return redirect()->route('user.allergies.show', $allergy->id)->with('success', 'Medication Deleted Successfully!');
+        return redirect()->route('user.medications.index')->with('success', 'Medication Deleted Successfully!');
     }
 }

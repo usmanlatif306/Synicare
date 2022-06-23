@@ -44,7 +44,7 @@
         <!-- page-body-wrapper ends -->
     </div>
     <!-- container-scroller -->
-    <script src="{{ mix('/js/app.js') }}"></script>
+    <!-- <script src="{{ mix('/js/app.js') }}"></script> -->
     <script src="{{asset('dashboard/vendors/js/vendor.bundle.base.js')}}"></script>
     <script src="{{asset('dashboard/js/off-canvas.js')}}"></script>
     <script src="{{asset('dashboard/js/hoverable-collapse.js')}}"></script>

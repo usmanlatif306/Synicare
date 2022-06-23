@@ -5,7 +5,7 @@
     <div class="card">
         <div class="card-header d-flex justify-content-between align-items-center">
             <h4>Edit Allergy</h4>
-            <a class="btn btn-sm btn-primary" href="{{route('admin.allergies.index')}}">Back</a>
+            <a class="btn btn-sm btn-primary" href="{{route('admin.medications.show',$allergy->user->id)}}">Back</a>
         </div>
         <div class="card-body">
             @if (session('success'))
@@ -18,9 +18,7 @@
                 @method('put')
                 <div class="form-group">
                     <label for="allergies">Allergies</label>
-                    <input id="allergies" type="text" name="allergies"
-                        class="form-control @error('allergies') is-invalid @enderror" placeholder="Allergies"
-                        value="{{$allergy->allergies}}">
+                    <input id="allergies" type="text" name="allergies" class="form-control @error('allergies') is-invalid @enderror" placeholder="Allergies" value="{{$allergy->allergies}}">
                     <small class="text-primary">use ' , ' for multiple allergies</small>
                     @error('allergies')
                     <span class="invalid-feedback" role="alert">
