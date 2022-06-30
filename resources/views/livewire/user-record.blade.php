@@ -6,8 +6,8 @@
         </div>
     </div>
     <div class="table-responsive mt-3">
-        <table class="table table-striped table-primary">
-            <thead>
+        <table class="table">
+            <thead class="thead-synicare">
                 <tr>
                     <th scope="col">No</th>
                     <th scope="col">Name</th>

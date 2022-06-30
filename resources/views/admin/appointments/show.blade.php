@@ -20,6 +20,7 @@
                             <thead>
                                 <tr>
                                     <th scope="col">No</th>
+                                    <th scope="col">Phone</th>
                                     <th scope="col">Consultant</th>
                                     <th scope="col">Details</th>
                                     <th scope="col">Due</th>
@@ -30,6 +31,7 @@
                                 @forelse($appointments as $item)
                                 <tr>
                                     <th scope="row">{{$loop->iteration}}</th>
+                                    <td>{{$item->user->phone}}</td>
                                     <td>{{$item->consultant}}</td>
                                     <td>{{$item->details}}</td>
                                     <td>{{$item->due}}</td>

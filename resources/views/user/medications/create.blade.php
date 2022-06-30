@@ -5,7 +5,7 @@
     <div class="card">
         <div class="card-header d-flex justify-content-between align-items-center">
             <h4>Create New Medication</h4>
-            <a class="btn btn-sm btn-primary" href="{{route('user.medications.index')}}">Back</a>
+            <a class="btn btn-sm btn-synicare" href="{{route('user.medications.index')}}">Back</a>
         </div>
         <div class="card-body">
             <form action="{{route('user.medications.store')}}" method="POST" enctype="multipart/form-data">
@@ -56,7 +56,7 @@
                     </span>
                     @enderror
                 </div>
-                <button type=" submit" class="btn btn-primary">Create Medication</button>
+                <button type=" submit" class="btn btn-synicare">Create Medication</button>
             </form>
         </div>
     </div>

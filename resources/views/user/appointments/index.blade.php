@@ -5,7 +5,7 @@
     <div class="card">
         <div class="card-header d-flex justify-content-between align-items-center">
             <h4>Appointment</h4>
-            <a class="btn btn-sm btn-primary" href="{{route('user.appointments.create')}}">Add New</a>
+            <a class="btn btn-sm btn-synicare" href="{{route('user.appointments.create')}}">Add New</a>
         </div>
         <div class="card-body">
             <div class="row">

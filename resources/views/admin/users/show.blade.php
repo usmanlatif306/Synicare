@@ -11,7 +11,7 @@
                 </div>
                 <div class="card-body">
                     <div class="table-responsive">
-                        <table class="table table-bordered table-striped table-primary">
+                        <table class="table table-bordered">
                             <tbody>
                                 <tr>
                                     <th>Name</th>
@@ -47,11 +47,9 @@
                     <h4>User Medications</h4>
                 </div>
                 <div class="card-body">
-                    @forelse($user->allergies as $item)
-                    <h4 class="py-3 text-primary">{{$item->allergies}}</h4>
                     <div class="table-responsive">
-                        <table class="table table-striped table-primary">
-                            <thead>
+                        <table class="table">
+                            <thead class="thead-synicare">
                                 <tr>
                                     <th scope="col">Medication</th>
                                     <th scope="col">Doze</th>
@@ -60,7 +58,8 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                @forelse($item->medications as $item)
+                                @if($user->allergy)
+                                @forelse($user->allergy->medications as $item)
                                 <tr>
                                     <td>{{$item->medication}}</td>
                                     <td>{{$item->doze}}</td>
@@ -69,17 +68,18 @@
                                 </tr>
                                 @empty
                                 <tr>
-                                    <td colspan="6">No Data</td>
+                                    <td colspan="4">No Data</td>
                                 </tr>
                                 @endforelse
+                                @else
+                                <tr>
+                                    <td colspan="4">No Data</td>
+                                </tr>
+                                @endif
 
                             </tbody>
                         </table>
                     </div>
-
-                    @empty
-                    <h5>No Data</h5>
-                    @endforelse
                 </div>
             </div>
 
@@ -93,8 +93,8 @@
                 </div>
                 <div class="card-body">
                     <div class="table-responsive">
-                        <table class="table table-striped table-primary">
-                            <thead>
+                        <table class="table">
+                            <thead class="thead-synicare">
                                 <tr>
                                     <th scope="col">No</th>
                                     <th scope="col">Payment Id</th>

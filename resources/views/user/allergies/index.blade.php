@@ -7,9 +7,9 @@
             <h4>Medications</h4>
             <div class="">
                 @if(auth()->user()->allergy)
-                <a class="btn btn-sm btn-primary mr-3" href="{{route('user.medications.create')}}">Add Medicatons</a>
+                <a class="btn btn-sm btn-synicare mr-3" href="{{route('user.medications.create')}}">Add Medicatons</a>
                 @else
-                <a class="btn btn-sm btn-primary" href="{{route('user.allergies.create')}}">Add Allergy</a>
+                <a class="btn btn-sm btn-synicare" href="{{route('user.allergies.create')}}">Add Allergy</a>
                 @endif
             </div>
         </div>

@@ -1,6 +1,6 @@
 <div class="table-responsive">
-    <table class="table table-striped table-primary">
-        <thead>
+    <table class="table">
+        <thead class="thead-synicare">
             <tr>
                 <th scope="col">No</th>
                 @if(auth()->user()->role_id == 1)

@@ -8,9 +8,9 @@
             <h4>{{$allergy->allergies}}</h4>
             <div class="">
                 @if(auth()->user()->allergies()->count() > 0)
-                <a class="btn btn-sm btn-primary mr-3" href="{{route('user.medications.create')}}">Add Medicatons</a>
+                <a class="btn btn-sm btn-synicare mr-3" href="{{route('user.medications.create')}}">Add Medicatons</a>
                 @endif
-                <a class="btn btn-sm btn-primary ml-3" href="{{route('user.allergies.index')}}">Back</a>
+                <a class="btn btn-sm btn-synicare ml-3" href="{{route('user.allergies.index')}}">Back</a>
             </div>
         </div>
         <div class="card-body">

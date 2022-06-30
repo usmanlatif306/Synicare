@@ -5,7 +5,7 @@
     <div class="card">
         <div class="card-header d-flex justify-content-between align-items-center">
             <h4>Edit Medication</h4>
-            <a class="btn btn-sm btn-primary" href="{{route('user.medications.index')}}">Back</a>
+            <a class="btn btn-sm btn-synicare" href="{{route('user.medications.index')}}">Back</a>
         </div>
         <div class="card-body">
             @if (session('success'))
@@ -69,7 +69,7 @@
                     <img src="{{url('/').'/'.$medication->image}}" alt="Medication Image" class="img-fluid rounded">
                 </div>
                 @endif
-                <button type=" submit" class="btn btn-primary">Update Medication</button>
+                <button type=" submit" class="btn btn-synicare">Update Medication</button>
             </form>
         </div>
     </div>

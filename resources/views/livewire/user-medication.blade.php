@@ -14,25 +14,19 @@
     </div>
     <!-- allergies list -->
     <div class="table-responsive mt-3">
-        <table class="table table-striped table-primary">
-            <thead>
+        <table class="table">
+            <thead class="thead-synicare">
                 <tr>
                     @if(auth()->user()->role_id == 1)
                     <th scope="col" style="width: 60%;">User</th>
                     @else
                     <th scope="col">Medication</th>
-                    <th scope="col">Doze</th>
+                    <th scope="col">Dose</th>
                     <th scope="col">Frequency</th>
                     <th scope="col">Prescriber</th>
                     @endif
                     <th>Last Updated</th>
-                    @if(auth()->user()->role_id == 1)
-                    <th scope="col">View Medications</th>
-                    @else
                     <th scope="col"></th>
-                    @endif
-
-
                 </tr>
             </thead>
             <tbody>
@@ -48,7 +42,7 @@
                     @endif
                     <td>{{$item->updated_at->format('d-m-Y H:i:s')}}</td>
                     <td>
-                        <div class="d-flex justify-content-center">
+                        <div class="d-flex">
                             <a href="{{ auth()->user()->role_id == 1 ? route('admin.medications.show',$item->id) : route('user.medications.show',$item->id)}}">
                                 <span class="text-primary cursor-pointer font-m mr-3" title="View Medication"><i class="fas fa-eye"></i></span>
                             </a>

@@ -7,9 +7,9 @@
             <h4>Medications</h4>
             <div class="">
                 @if(auth()->user()->allergy)
-                <a class="btn btn-sm btn-primary mr-3" href="{{route('user.medications.create')}}">Add Medicatons</a>
+                <a class="btn btn-sm btn-synicare mr-3" href="{{route('user.medications.create')}}">Add Medicatons</a>
                 @else
-                <a class="btn btn-sm btn-primary" href="{{route('user.allergies.create')}}">Add Allergy</a>
+                <a class="btn btn-sm btn-synicare" href="{{route('user.allergies.create')}}">Add Allergy</a>
                 @endif
             </div>
         </div>
@@ -32,8 +32,10 @@
                         <div class="col-12 mt-3 text-center">
                             <h4 class="text-center">Allergies: </h4>
                             <p style="font-size: 16px;">
-                                <a class="text-black" href="{{route('user.allergies.edit',auth()->user()->allergy->id)}}">
-                                    {{ auth()->user()->allergy->allergies}}
+                                {{ auth()->user()->allergy->allergies}}
+                                <a title="Edit Allergy" class="ml-1 text-primary" style="font-size: 12px;" href="{{route('user.allergies.edit',auth()->user()->allergy->id)}}">
+                                    <i class="fas fa-edit"></i>
+
                                 </a>
                             </p>
                         </div>

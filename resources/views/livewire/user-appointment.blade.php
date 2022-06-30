@@ -6,18 +6,22 @@
         </div>
     </div>
     <div class="table-responsive mt-3">
-        <table class="table table-striped table-primary">
-            <thead>
+        <table class="table">
+            <thead class="thead-synicare">
                 <tr>
                     <th scope="col">No</th>
                     @if(auth()->user()->role_id == 1)
                     <th scope="col">User</th>
-                    <th scope="col">Phone</th>
+                    <th scope="col">Latest Appointment Date</th>
                     @else
                     <th scope="col">Consultant</th>
                     <th scope="col">Due</th>
                     @endif
+                    @if(auth()->user()->role_id == 1)
+                    <th scope="col">View Appointment</th>
+                    @else
                     <th scope="col"></th>
+                    @endif
                 </tr>
             </thead>
             <tbody>
@@ -26,13 +30,13 @@
                     <th scope="row">{{$loop->iteration}}</th>
                     @if(auth()->user()->role_id == 1)
                     <td>{{$item->name}}</td>
-                    <td>{{$item->phone}}</td>
+                    <td>{{$item->appointments()->select(['due'])->first()->due}}</td>
                     @else
                     <td>{{$item->consultant}}</td>
                     <td>{{$item->due}}</td>
                     @endif
                     <td>
-                        <div class="d-flex">
+                        <div class="d-flex justify-content-center">
                             @if(auth()->user()->role_id == 1)
                             <a href="{{ route('admin.appointments.show',$item->id)}}">
                                 <span class="text-primary cursor-pointer font-m mr-3" title="View Appointment"><i class="fas fa-eye"></i></span>

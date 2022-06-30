@@ -25,3 +25,37 @@ input[type="number"] {
 /* .vc-container {
     width: 100% !important;
 } */
+.btn-synicare,
+.btn-primary,
+.btn-synicare:hover,
+.btn-primary:hover,
+.pagination .page-item.active .page-link,
+.pagination .page-item .page-link:hover {
+    color: #fff;
+    background-color: #3a8abd;
+    border-color: #3a8abd;
+}
+.text-primary {
+    color: #3a8abd !important;
+}
+/* .btn-synicare:hover,
+.btn-primary:hover {
+    color: #fff;
+    background-color: #3a8abd;
+} */
+.acive,
+.sidebar .nav .nav-item.active > .nav-link,
+.sidebar .nav .nav-item .nav-link:hover,
+.sidebar .nav:not(.sub-menu) > .nav-item.active,
+.sidebar-icon-only
+    .sidebar
+    .nav
+    .nav-item.hover-open
+    .nav-link:hover
+    .menu-title {
+    background-color: #3a8abd !important;
+}
+.table .thead-synicare th {
+    background-color: #3a8abd !important;
+    color: #fff;
+}

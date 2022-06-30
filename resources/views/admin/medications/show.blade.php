@@ -16,8 +16,10 @@
                 <div class="col-12 mt-3 text-center">
                     <h4 class="text-center">Allergies: </h4>
                     <p style="font-size: 16px;">
-                        <a class="text-black" href="{{route('admin.allergies.edit',$allergy->id)}}">
-                            {{ $allergy->allergies}}
+                        {{ $allergy->allergies}}
+                        <a title="Edit Allergy" class="ml-1 text-primary" style="font-size: 12px;" href="{{route('admin.allergies.edit',$allergy->id)}}">
+                            <i class="fas fa-edit"></i>
+
                         </a>
                     </p>
                 </div>

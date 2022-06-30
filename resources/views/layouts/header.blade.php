@@ -17,7 +17,7 @@
             @if(auth()->user()->date_of_birth)
             <li class="nav-item">
                 <a class="nav-link mr-2" href="javascript:void(0)">
-                    {{auth()->user()->date_of_birth->format('d-m-Y')}}
+                    {{auth()->user()->date_of_birth->format('m-d-Y')}}
                 </a>
             </li>
             @endif

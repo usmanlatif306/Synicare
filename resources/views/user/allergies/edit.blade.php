@@ -5,7 +5,7 @@
     <div class="card">
         <div class="card-header d-flex justify-content-between align-items-center">
             <h4>Edit Allergy</h4>
-            <a class="btn btn-sm btn-primary" href="{{route('user.medications.index')}}">Back</a>
+            <a class="btn btn-sm btn-synicare" href="{{route('user.medications.index')}}">Back</a>
         </div>
         <div class="card-body">
             @if (session('success'))
@@ -27,7 +27,7 @@
                     @enderror
                 </div>
 
-                <button type=" submit" class="btn btn-primary">Update Allergy</button>
+                <button type=" submit" class="btn btn-synicare">Update Allergy</button>
             </form>
         </div>
     </div>

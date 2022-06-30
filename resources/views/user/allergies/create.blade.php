@@ -5,16 +5,14 @@
     <div class="card">
         <div class="card-header d-flex justify-content-between align-items-center">
             <h4>Create New Allergy</h4>
-            <a class="btn btn-sm btn-primary" href="{{route('user.allergies.index')}}">Back</a>
+            <a class="btn btn-sm btn-synicare" href="{{route('user.allergies.index')}}">Back</a>
         </div>
         <div class="card-body">
             <form action="{{route('user.allergies.store')}}" method="POST" enctype="multipart/form-data">
                 @csrf
                 <div class="form-group">
                     <label for="allergies">Allergies</label>
-                    <input id="allergies" type="text" name="allergies"
-                        class="form-control @error('allergies') is-invalid @enderror" placeholder="Allergies"
-                        value="{{old('allergies')}}">
+                    <input id="allergies" type="text" name="allergies" class="form-control @error('allergies') is-invalid @enderror" placeholder="Allergies" value="{{old('allergies')}}">
                     <small class="text-primary">use ' , ' for multiple allergies</small>
                     @error('allergies')
                     <span class="invalid-feedback" role="alert">
@@ -22,7 +20,7 @@
                     </span>
                     @enderror
                 </div>
-                <button type=" submit" class="btn btn-primary">Create Allergy</button>
+                <button type=" submit" class="btn btn-synicare">Create Allergy</button>
             </form>
         </div>
     </div>

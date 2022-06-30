@@ -25,7 +25,7 @@
                             </span>
                             @enderror
                         </div>
-                        <button type="submit" class="btn btn-primary">Update Profile Image</button>
+                        <button type="submit" class="btn btn-synicare">Update Profile Image</button>
 
                     </form>
                 </div>
@@ -82,7 +82,7 @@
                             </span>
                             @enderror
                         </div>
-                        <button type=" submit" class="btn btn-primary">Update Profile</button>
+                        <button type=" submit" class="btn btn-synicare">Update Profile</button>
                     </form>
                 </div>
             </div>
@@ -127,7 +127,7 @@
                             <label for="password">Confirm Password</label>
                             <input id="password_confirmation" type="password" name="password_confirmation" class="form-control" placeholder="Confirm Password">
                         </div>
-                        <button type=" submit" class="btn btn-primary">Update Password</button>
+                        <button type=" submit" class="btn btn-synicare">Update Password</button>
                     </form>
                 </div>
             </div>
