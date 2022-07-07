@@ -18,9 +18,7 @@ class User extends Authenticatable
      * @var array<int, string>
      */
     protected $fillable = [
-        'name',
-        'email',
-        'password', 'phone', 'address', 'date_of_birth', 'image'
+        'first_name', 'last_name', 'email', 'password', 'phone', 'address', 'date_of_birth', 'image'
     ];
 
     /**
@@ -33,6 +31,7 @@ class User extends Authenticatable
         'remember_token',
     ];
 
+
     /**
      * The attributes that should be cast.
      *
@@ -42,6 +41,11 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
         'date_of_birth' => 'date',
     ];
+
+    public function name()
+    {
+        return $this->first_name . ' ' . $this->last_name;
+    }
 
     // user allergies
     public function allergy()

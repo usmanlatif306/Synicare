@@ -39,7 +39,7 @@ class SubscriptionController extends Controller
             'expired_at' => now()->addDays($days),
         ]);
 
-        return redirect()->route('user.medications.index')->with('success', 'Thank you for subscription. You can proceed further');
+        return redirect()->route('user.allergies.create')->with('success', 'Thank you for subscription. You can proceed further.');
     }
 
     // user subscriptions record

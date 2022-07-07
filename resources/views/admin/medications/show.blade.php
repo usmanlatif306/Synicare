@@ -3,7 +3,7 @@
 @section('content')
 <div class="card">
     <div class="card-header d-flex justify-content-between align-items-center">
-        <h4>{{$allergy->user->name}}'s Medication Details</h4>
+        <h4>{{$allergy->user->name()}}'s Medication Details</h4>
         <div class="">
             <a class="btn btn-sm btn-primary mr-3" href="{{route('admin.medications.create')}}">Add New Medication</a>
             <a class="btn btn-sm btn-primary" href="{{route('admin.medications.index')}}">Back</a>

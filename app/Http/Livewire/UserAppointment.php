@@ -18,7 +18,7 @@ class UserAppointment extends Component
         $searchTerm = '%' . $this->searchTerm . '%';
 
         return view('livewire.user-appointment', [
-            'appointments' => auth()->user()->role_id == 1 ? User::where('name', 'like', $searchTerm)->whereHas('appointments')->latest()->paginate(10) : auth()->user()->appointments()->where(function ($query) use ($searchTerm) {
+            'appointments' => auth()->user()->role_id == 1 ? User::where('first_name', 'like', $searchTerm)->whereHas('appointments')->latest()->paginate(10) : auth()->user()->appointments()->where(function ($query) use ($searchTerm) {
                 $query->where('consultant', 'LIKE', $searchTerm);
             })->paginate(10)
         ]);

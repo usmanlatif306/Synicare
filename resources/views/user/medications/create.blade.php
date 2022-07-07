@@ -20,8 +20,8 @@
                     @enderror
                 </div>
                 <div class="form-group">
-                    <label for="doze">Doze</label>
-                    <input id="doze" type="text" name="doze" class="form-control @error('doze') is-invalid @enderror" placeholder="Doze" value="{{old('doze')}}">
+                    <label for="doze">Dose</label>
+                    <input id="doze" type="text" name="doze" class="form-control @error('doze') is-invalid @enderror" placeholder="Dose" value="{{old('doze')}}">
                     @error('doze')
                     <span class="invalid-feedback" role="alert">
                         <strong>{{ $message }}</strong>

@@ -17,9 +17,10 @@ class UserRecord extends Component
         $searchTerm = '%' . $this->searchTerm . '%';
         return view('livewire.user-record', [
             'users' => User::where('role_id', 0)->where(function ($query) use ($searchTerm) {
-                $query->where('name', 'like', $searchTerm)
-                    ->orWhere('email', 'like', $searchTerm);
-            })->select(['id', 'name', 'email', 'phone'])->paginate(10)
+                $query->where('first_name', 'like', $searchTerm)
+                    ->orWhere('email', 'like', $searchTerm)
+                    ->orWhere('last_name', 'like', $searchTerm);
+            })->select(['id', 'first_name', 'last_name', 'email', 'phone'])->paginate(10)
         ]);
     }
 }

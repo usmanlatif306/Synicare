@@ -4,7 +4,7 @@
 <div class="container">
     <div class="card">
         <div class="card-header d-flex justify-content-between align-items-center">
-            <h4>{{$user->name}} Appointments</h4>
+            <h4>{{$user->name()}} Appointments</h4>
             <a class="btn btn-sm btn-primary" href="{{route('admin.appointments.index')}}">Back</a>
         </div>
         <div class="card-body">

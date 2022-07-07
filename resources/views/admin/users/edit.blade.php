@@ -15,10 +15,8 @@
                         {{ session('image') }}
                     </div>
                     @endif
-                    <img src="{{$user->image ? url('/').'/'.$user->image:asset('storage/images/user.jpg')}}"
-                        alt="User Image" class="img-fluid">
-                    <form class="mt-3" action="{{route('admin.users.image',$user->id)}}" method="POST"
-                        enctype="multipart/form-data">
+                    <img src="{{$user->image ? url('/').'/'.$user->image:asset('storage/images/user.jpg')}}" alt="User Image" class="img-fluid">
+                    <form class="mt-3" action="{{route('admin.users.image',$user->id)}}" method="POST" enctype="multipart/form-data">
                         @csrf
                         <div class="form-group">
                             <input type="file" class="form-control" name="image">
@@ -49,16 +47,22 @@
                         @method('put')
                         <div class="form-group">
                             <label for="email">Email</label>
-                            <input id="name" type="email" name="email" class="form-control" value="{{$user->email}}"
-                                readonly>
+                            <input id="name" type="email" name="email" class="form-control" value="{{$user->email}}" readonly>
 
                         </div>
                         <div class="form-group">
-                            <label for="name">Name</label>
-                            <input id="name" type="text" name="name"
-                                class="form-control @error('name') is-invalid @enderror" placeholder="Name"
-                                value="{{$user->name ?? old('name')}}">
-                            @error('name')
+                            <label for="first_name">First Name</label>
+                            <input id="first_name" type="text" name="first_name" class="form-control @error('first_name') is-invalid @enderror" placeholder="Name" value="{{$user->first_name ?? old('first_name')}}">
+                            @error('first_name')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                            @enderror
+                        </div>
+                        <div class="form-group">
+                            <label for="last_name">Last Name</label>
+                            <input id="last_name" type="text" name="last_name" class="form-control @error('last_name') is-invalid @enderror" placeholder="Name" value="{{$user->last_name ?? old('last_name')}}">
+                            @error('last_name')
                             <span class="invalid-feedback" role="alert">
                                 <strong>{{ $message }}</strong>
                             </span>
@@ -66,9 +70,7 @@
                         </div>
                         <div class="form-group">
                             <label for="phone">Phone</label>
-                            <input id="phone" type="text" name="phone"
-                                class="form-control @error('Phone') is-invalid @enderror" placeholder="Phone"
-                                value="{{$user->phone ?? old('phone')}}">
+                            <input id="phone" type="text" name="phone" class="form-control @error('Phone') is-invalid @enderror" placeholder="Phone" value="{{$user->phone ?? old('phone')}}">
                             @error('phone')
                             <span class="invalid-feedback" role="alert">
                                 <strong>{{ $message }}</strong>
@@ -77,10 +79,7 @@
                         </div>
                         <div class="form-group">
                             <label for="date_of_birth">Date of Birth</label>
-                            <input id="date_of_birth" type="date" name="date_of_birth"
-                                class="form-control @error('date_of_birth') is-invalid @enderror"
-                                placeholder="Blood Group"
-                                value="{{$user->date_of_birth ? $user->date_of_birth->format('Y-m-d') : old('date_of_birth')}}">
+                            <input id="date_of_birth" type="date" name="date_of_birth" class="form-control @error('date_of_birth') is-invalid @enderror" placeholder="Blood Group" value="{{$user->date_of_birth ? $user->date_of_birth->format('Y-m-d') : old('date_of_birth')}}">
                             @error('date_of_birth')
                             <span class="invalid-feedback" role="alert">
                                 <strong>{{ $message }}</strong>
@@ -89,9 +88,7 @@
                         </div>
                         <div class="form-group">
                             <label for="address">Address</label>
-                            <input id="address" type="text" name="address"
-                                class="form-control @error('address') is-invalid @enderror" placeholder="Address"
-                                value="{{$user->address ?? old('address')}}">
+                            <input id="address" type="text" name="address" class="form-control @error('address') is-invalid @enderror" placeholder="Address" value="{{$user->address ?? old('address')}}">
                             @error('address')
                             <span class="invalid-feedback" role="alert">
                                 <strong>{{ $message }}</strong>
@@ -101,8 +98,7 @@
 
                         <div class="form-group">
                             <label for="password">Password</label>
-                            <input id="password" type="password" name="password"
-                                class="form-control @error('password') is-invalid @enderror" placeholder="Password">
+                            <input id="password" type="password" name="password" class="form-control @error('password') is-invalid @enderror" placeholder="Password">
                             <small class="text-primary">Only enter password if you want to update</small>
                             @error('password')
                             <span class="invalid-feedback" role="alert">
@@ -112,8 +108,7 @@
                         </div>
                         <div class="form-group">
                             <label for="confirm_password">Confirm Password</label>
-                            <input id="confirm_password" type="password" name="password_confirmation"
-                                class="form-control " placeholder="Confirm Password">
+                            <input id="confirm_password" type="password" name="password_confirmation" class="form-control " placeholder="Confirm Password">
                         </div>
                         <button type=" submit" class="btn btn-primary">Update Profile</button>
                     </form>

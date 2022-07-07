@@ -32,7 +32,7 @@ class SettingController extends Controller
         $data['today_medications_percentage'] = $this->Percentage($data['today_medications'], $data['30_days_medications']);
 
         // top 5 users
-        $data['users'] = User::where('role_id', 0)->latest()->limit(5)->get(['name', 'email', 'phone', 'date_of_birth']);
+        $data['users'] = User::where('role_id', 0)->latest()->limit(5)->get(['first_name', 'last_name', 'email', 'phone', 'date_of_birth']);
 
         // top 5 medications
         $data['medications'] = Medication::latest()->limit(5)->get();

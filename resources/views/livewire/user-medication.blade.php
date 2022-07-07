@@ -33,7 +33,7 @@
                 @forelse($medications as $item)
                 <tr>
                     @if(auth()->user()->role_id == 1)
-                    <td scope="col" style="width: 60%;">{{$item->name}}</th>
+                    <td scope="col" style="width: 60%;">{{$item->name()}}</th>
                         @else
                     <td>{{$item->medication}}</td>
                     <td>{{$item->doze}}</td>

@@ -9,12 +9,11 @@
         <table class="table">
             <thead class="thead-synicare">
                 <tr>
-                    <th scope="col">No</th>
                     @if(auth()->user()->role_id == 1)
                     <th scope="col">User</th>
                     <th scope="col">Latest Appointment Date</th>
                     @else
-                    <th scope="col">Consultant</th>
+                    <th scope="col">Specialist</th>
                     <th scope="col">Due</th>
                     @endif
                     @if(auth()->user()->role_id == 1)
@@ -27,13 +26,12 @@
             <tbody>
                 @forelse($appointments as $item)
                 <tr>
-                    <th scope="row">{{$loop->iteration}}</th>
                     @if(auth()->user()->role_id == 1)
-                    <td>{{$item->name}}</td>
+                    <td>{{$item->name()}}</td>
                     <td>{{$item->appointments()->select(['due'])->first()->due}}</td>
                     @else
                     <td>{{$item->consultant}}</td>
-                    <td>{{$item->due}}</td>
+                    <td>{{$item->due->format('m/d/Y')}}</td>
                     @endif
                     <td>
                         <div class="d-flex justify-content-center">

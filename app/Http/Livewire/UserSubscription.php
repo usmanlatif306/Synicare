@@ -16,7 +16,7 @@ class UserSubscription extends Component
     {
         $searchTerm = '%' . $this->searchTerm . '%';
         return view('livewire.user-subscription', [
-            'subscriptions' => auth()->user()->role_id == 1 ? Subscription::with(['user:id,name'])->paginate(10) : auth()->user()->subscriptions()->paginate(10)
+            'subscriptions' => auth()->user()->role_id == 1 ? Subscription::with(['user:id,first_name,last_name'])->paginate(10) : auth()->user()->subscriptions()->paginate(10)
         ]);
     }
 }

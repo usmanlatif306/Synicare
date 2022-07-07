@@ -46,9 +46,18 @@
                     <form action="{{route('profile.update')}}" method="POST">
                         @csrf
                         <div class="form-group">
-                            <label for="name">Name</label>
-                            <input id="name" type="text" name="name" class="form-control @error('name') is-invalid @enderror" placeholder="Name" value="{{auth()->user()->name ?? old('name')}}">
-                            @error('name')
+                            <label for="first_name">First Name</label>
+                            <input id="first_name" type="text" name="first_name" class="form-control @error('first_name') is-invalid @enderror" placeholder="Name" value="{{auth()->user()->first_name ?? old('first_name')}}">
+                            @error('first_name')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                            @enderror
+                        </div>
+                        <div class="form-group">
+                            <label for="last_name">Last Name</label>
+                            <input id="last_name" type="text" name="last_name" class="form-control @error('last_name') is-invalid @enderror" placeholder="Name" value="{{auth()->user()->last_name ?? old('last_name')}}">
+                            @error('last_name')
                             <span class="invalid-feedback" role="alert">
                                 <strong>{{ $message }}</strong>
                             </span>
@@ -73,15 +82,15 @@
                             @enderror
                         </div>
 
-                        <div class="form-group">
+                        <!-- <div class="form-group">
                             <label for="address">Address</label>
-                            <input id="address" type="text" name="address" class="form-control @error('address') is-invalid @enderror" placeholder="Name" value="{{auth()->user()->address ?? old('address')}}">
+                            <input id="address" type="text" name="address" class="form-control @error('address') is-invalid @enderror" placeholder="Address" value="{{auth()->user()->address ?? old('address')}}">
                             @error('address')
                             <span class="invalid-feedback" role="alert">
                                 <strong>{{ $message }}</strong>
                             </span>
                             @enderror
-                        </div>
+                        </div> -->
                         <button type=" submit" class="btn btn-synicare">Update Profile</button>
                     </form>
                 </div>

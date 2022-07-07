@@ -17,8 +17,8 @@
                 @csrf
                 @method('put')
                 <div class="form-group">
-                    <label for="consultant">Consultant</label>
-                    <input id="consultant" type="text" name="consultant" class="form-control @error('consultant') is-invalid @enderror" placeholder="Consultant" value="{{$appointment->consultant}}">
+                    <label for="consultant">Specialist</label>
+                    <input id="consultant" type="text" name="consultant" class="form-control @error('consultant') is-invalid @enderror" placeholder="Specialist" value="{{$appointment->consultant}}">
                     @error('consultant')
                     <span class="invalid-feedback" role="alert">
                         <strong>{{ $message }}</strong>

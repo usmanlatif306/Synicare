@@ -8,6 +8,11 @@
             <a class="btn btn-sm btn-synicare" href="{{route('user.allergies.index')}}">Back</a>
         </div>
         <div class="card-body">
+            @if (session('success'))
+            <div class="alert alert-success" role="alert">
+                {{ session('success') }}
+            </div>
+            @endif
             <form action="{{route('user.allergies.store')}}" method="POST" enctype="multipart/form-data">
                 @csrf
                 <div class="form-group">

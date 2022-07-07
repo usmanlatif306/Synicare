@@ -15,7 +15,7 @@
                             <tbody>
                                 <tr>
                                     <th>Name</th>
-                                    <td>{{$user->name}}</td>
+                                    <td>{{$user->name()}}</td>
                                 </tr>
                                 <tr>
                                     <th>Email</th>
@@ -29,10 +29,10 @@
                                     <th>Date of Birth</th>
                                     <td>{{$user->date_of_birth ? $user->date_of_birth->format('d-m-Y') : ''}}</td>
                                 </tr>
-                                <tr>
+                                <!-- <tr>
                                     <th>Address</th>
                                     <td>{{$user->address}}</td>
-                                </tr>
+                                </tr> -->
                             </tbody>
                         </table>
                     </div>

@@ -17,7 +17,7 @@ class SubscriptionMiddleware
     public function handle(Request $request, Closure $next)
     {
         if (!auth()->user()->subscription) {
-            return redirect()->route('subscription')->with('error', 'User has not active subscription. Kindly subscribe before further proceed!');
+            return redirect()->route('subscription')->with('error', 'Enter payment information to subscribe!');
         }
         return $next($request);
     }

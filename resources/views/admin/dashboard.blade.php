@@ -6,7 +6,7 @@
         <div class="col-md-12 grid-margin">
             <div class="row">
                 <div class="col-12 col-xl-8 mb-4 mb-xl-0">
-                    <h3 class="font-weight-bold">Welcome {{auth()->user()->name}}</h3>
+                    <h3 class="font-weight-bold">Welcome {{auth()->user()->name()}}</h3>
                 </div>
             </div>
         </div>
@@ -75,7 +75,7 @@
                                 @forelse($data['users'] as $user)
                                 <tr>
                                     <th scope="row">{{$loop->iteration}}</th>
-                                    <td>{{$user->name}}</td>
+                                    <td>{{$user->name()}}</td>
                                     <td>{{$user->email}}</td>
                                     <td>{{$user->phone}}</td>
                                     <td>{{$user->date_of_birth ? $user->date_of_birth->format('d-m-Y') : ''}}</td>

@@ -16,7 +16,7 @@
             <tr>
                 <th scope="row">{{$loop->iteration}}</th>
                 @if(auth()->user()->role_id == 1)
-                <td>{{$item->user->name}}</td>
+                <td>{{$item->user->name()}}</td>
                 @endif
                 <td>{{$item->stripe_id}}</td>
                 <td>${{$item->amount}}</td>

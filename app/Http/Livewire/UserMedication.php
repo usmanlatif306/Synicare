@@ -19,7 +19,7 @@ class UserMedication extends Component
         $searchTerm = '%' . $this->searchTerm . '%';
 
         return view('livewire.user-medication', [
-            'medications' => auth()->user()->role_id == 1 ? User::where('name', 'like', $searchTerm)->whereHas('allergy')->latest()->paginate(10) : auth()->user()->allergy->medications()->where(function ($query) use ($searchTerm) {
+            'medications' => auth()->user()->role_id == 1 ? User::where('first_name', 'like', $searchTerm)->whereHas('allergy')->latest()->paginate(10) : auth()->user()->allergy->medications()->where(function ($query) use ($searchTerm) {
                 $query->where('medication', 'LIKE', $searchTerm)
                     ->orWhere('doze', 'LIKE', $searchTerm)
                     ->orWhere('prescriber', 'LIKE', $searchTerm)

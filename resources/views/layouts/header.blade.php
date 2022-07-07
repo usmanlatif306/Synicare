@@ -11,7 +11,7 @@
         <ul class="navbar-nav navbar-nav-right">
             <li class="nav-item">
                 <a class="nav-link " href="javascript:void(0)">
-                    {{auth()->user()->name}}
+                    {{auth()->user()->name()}}
                 </a>
             </li>
             @if(auth()->user()->date_of_birth)

@@ -40,7 +40,7 @@
                             </p>
                         </div>
                         <div class=" col-12">
-                            <h4 class="text-center">My Home Medications List</h4>
+                            <h4 class="text-center">My Home Medication List</h4>
                         </div>
                     </div>
                     @livewire('user-medication')

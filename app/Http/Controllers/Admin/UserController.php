@@ -76,10 +76,12 @@ class UserController extends Controller
     {
         // dd($request->all());
         $request->validate([
-            'name' => ['required', 'string', 'max:255'],
-            'phone' => ['string', 'max:20'],
-            'address' => ['string'],
-            'date_of_birth' => ['date'],
+            // 'name' => ['required', 'string', 'max:255'],
+            'first_name' => ['required', 'string', 'max:255'],
+            'last_name' => ['required', 'string', 'max:255'],
+            'phone' => ['required', 'string', 'max:20'],
+            'address' => ['nullable', 'string'],
+            'date_of_birth' => ['required', 'date'],
         ]);
         // if request has password then validate
         if ($request->password) {

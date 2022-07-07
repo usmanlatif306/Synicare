@@ -11,8 +11,8 @@
             <form action="{{route('user.appointments.store')}}" method="POST">
                 @csrf
                 <div class="form-group">
-                    <label for="consultant">Consultant</label>
-                    <input id="consultant" type="text" name="consultant" class="form-control @error('consultant') is-invalid @enderror" placeholder="Consultant" value="{{old('consultant')}}">
+                    <label for="consultant">Specialist</label>
+                    <input id="consultant" type="text" name="consultant" class="form-control @error('consultant') is-invalid @enderror" placeholder="Specialist" value="{{old('consultant')}}">
                     @error('consultant')
                     <span class="invalid-feedback" role="alert">
                         <strong>{{ $message }}</strong>
