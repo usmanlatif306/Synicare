@@ -14,7 +14,7 @@
                     <th scope="col">Latest Appointment Date</th>
                     @else
                     <th scope="col">Specialist</th>
-                    <th scope="col">Due</th>
+                    <th scope="col">Date</th>
                     @endif
                     @if(auth()->user()->role_id == 1)
                     <th scope="col">View Appointment</th>

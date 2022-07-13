@@ -14,8 +14,7 @@
             </span>
         </div>
         <div class="wrap-input100 validate-input">
-            <input class="input100 @error('email') focus-error100 @enderror" type="email" name="email"
-                placeholder="name@example.com" value="{{ old('email') }}" required>
+            <input class="input100 @error('email') focus-error100 @enderror" type="email" name="email" placeholder="name@example.com" value="{{ old('email') }}" required>
             <span class="focus-input100"></span>
         </div>
         @error('email')
@@ -35,8 +34,7 @@
             </a>
         </div>
         <div class="wrap-input100 validate-input">
-            <input class="input100 @error('password') focus-error100 @enderror" type="password" name="password"
-                placeholder="********">
+            <input class="input100 @error('password') focus-error100 @enderror" type="password" name="password" placeholder="********">
             <span class="focus-input100"></span>
         </div>
         @error('password')
@@ -51,11 +49,11 @@
     </div>
 
     <div class="w-full text-center p-t-55">
-        <span class="txt2">
+        <span class="txt2 text-black">
             Not a member?
         </span>
 
-        <a href="{{route('register')}}" class="txt2 bo1">
+        <a href="{{route('register')}}" class="txt2 bo1 text-black">
             Sign up now
         </a>
     </div>

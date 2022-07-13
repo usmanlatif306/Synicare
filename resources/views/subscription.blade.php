@@ -27,14 +27,25 @@
                     </div>
                     @endif
                     <span class="text-primary font-weight-bold">You will be charged
-                        ${{env('SUBSCRIPTION_PRICE')}}</span>
+                        ${{env('SUBSCRIPTION_PRICE')}} /month</span>
                     <form class="mt-3" action="{{route('subscription.save')}}" method="POST" id="paymentForm" data-cc-on-file="false" data-stripe-publishable-key="{{ env('STRIPE_KEY') }}">
                         @csrf
                         <input type="hidden" name="price" value="{{env('SUBSCRIPTION_PRICE')}}" />
-                        <div class="form-group">
-                            <label for="cardHolderName" class="font-weight-bold">Card Holder Name *</label>
-                            <input type="text" name="card_holder_name" class="form-control" id="cardHolderName" placeholder="Card Holder Name" />
+                        <div class="form-row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="cardHolderFirstName" class="font-weight-bold">First Name *</label>
+                                    <input type="text" name="first_name" class="form-control" id="cardHolderFirstName" placeholder="First Name" />
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="cardHolderLastName" class="font-weight-bold">Last Name *</label>
+                                    <input type="text" name="last_name" class="form-control" id="cardHolderlastName" placeholder="Last Name" />
+                                </div>
+                            </div>
                         </div>
+
                         <div class="form-group">
                             <label for="cardNumber" class="font-weight-bold">Credit Card Number *</label>
                             <input oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" type="number" class="form-control" id="cardNumber" placeholder="Credit Card Number" maxlength="16" />

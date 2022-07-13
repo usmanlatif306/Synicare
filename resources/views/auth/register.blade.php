@@ -8,23 +8,26 @@
     <span class="login100-form-title">
         Create Account
     </span>
-    <!-- first name -->
-    <div class="wrap-input100 validate-input m-t-30">
-        <input class="input100 @error('first_name') focus-error100 @enderror" type="text" placeholder="First Name" name="first_name" value="{{ old('first_name') }}" required>
-        <span class="focus-input100"></span>
-    </div>
-    @error('first_name')
-    <div class="error m-t-5">{{$message}}</div>
-    @enderror
+    <div class="d-flex">
+        <!-- first name -->
+        <div class="wrap-input100 validate-input m-t-30" style="margin-right: 5px;">
+            <input class="input100 @error('first_name') focus-error100 @enderror" type="text" placeholder="First Name" name="first_name" value="{{ old('first_name') }}" required>
+            <span class="focus-input100"></span>
+        </div>
+        @error('first_name')
+        <div class="error m-t-5">{{$message}}</div>
+        @enderror
 
-    <!-- last name -->
-    <div class="wrap-input100 validate-input m-t-30">
-        <input class="input100 @error('last_name') focus-error100 @enderror" type="text" placeholder="Last Name" name="last_name" value="{{ old('last_name') }}" required>
-        <span class="focus-input100"></span>
+        <!-- last name -->
+        <div class="wrap-input100 validate-input m-t-30" style="margin-left: 5px;">
+            <input class="input100 @error('last_name') focus-error100 @enderror" type="text" placeholder="Last Name" name="last_name" value="{{ old('last_name') }}" required>
+            <span class="focus-input100"></span>
+        </div>
+        @error('last_name')
+        <div class="error m-t-5">{{$message}}</div>
+        @enderror
     </div>
-    @error('last_name')
-    <div class="error m-t-5">{{$message}}</div>
-    @enderror
+
 
     <!-- Email -->
     <div class="wrap-input100 validate-input m-t-10">
@@ -57,11 +60,11 @@
     </div>
 
     <div class="w-full text-center p-t-55">
-        <span class="txt2">
+        <span class="txt2 text-black">
             Already member?
         </span>
 
-        <a href="{{route('login')}}" class="txt2 bo1">
+        <a href="{{route('login')}}" class="txt2 bo1 text-black">
             Login
         </a>
     </div>

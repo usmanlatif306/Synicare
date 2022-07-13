@@ -27,7 +27,7 @@
                 </div>
                 <div class="form-group">
                     <label for="doze">Dose</label>
-                    <input id="doze" type="text" name="doze" class="form-control @error('doze') is-invalid @enderror" placeholder="Doze" value="{{$medication->doze}}">
+                    <input id="doze" type="text" name="doze" class="form-control @error('doze') is-invalid @enderror" placeholder="Dose" value="{{$medication->doze}}">
                     @error('dose')
                     <span class="invalid-feedback" role="alert">
                         <strong>{{ $message }}</strong>

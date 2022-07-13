@@ -562,3 +562,16 @@ iframe {
     width: 25%;
     margin-bottom: 20px;
 }
+
+.d-flex {
+    display: flex;
+}
+.justify-content-between {
+    justify-content: space-between;
+}
+.text-black {
+    color: #000 !important;
+}
+.text-heading {
+    color: #555555 !important;
+}

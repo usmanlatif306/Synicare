@@ -45,26 +45,34 @@
                     @endif
                     <form action="{{route('profile.update')}}" method="POST">
                         @csrf
-                        <div class="form-group">
-                            <label for="first_name">First Name</label>
-                            <input id="first_name" type="text" name="first_name" class="form-control @error('first_name') is-invalid @enderror" placeholder="Name" value="{{auth()->user()->first_name ?? old('first_name')}}">
-                            @error('first_name')
-                            <span class="invalid-feedback" role="alert">
-                                <strong>{{ $message }}</strong>
-                            </span>
-                            @enderror
+                        <div class="form-row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="first_name"><span class="text-danger">*</span> First Name</label>
+                                    <input id="first_name" type="text" name="first_name" class="form-control @error('first_name') is-invalid @enderror" placeholder="Name" value="{{auth()->user()->first_name ?? old('first_name')}}">
+                                    @error('first_name')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                    @enderror
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="last_name"><span class="text-danger">*</span> Last Name</label>
+                                    <input id="last_name" type="text" name="last_name" class="form-control @error('last_name') is-invalid @enderror" placeholder="Name" value="{{auth()->user()->last_name ?? old('last_name')}}">
+                                    @error('last_name')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                    @enderror
+                                </div>
+                            </div>
                         </div>
+
+
                         <div class="form-group">
-                            <label for="last_name">Last Name</label>
-                            <input id="last_name" type="text" name="last_name" class="form-control @error('last_name') is-invalid @enderror" placeholder="Name" value="{{auth()->user()->last_name ?? old('last_name')}}">
-                            @error('last_name')
-                            <span class="invalid-feedback" role="alert">
-                                <strong>{{ $message }}</strong>
-                            </span>
-                            @enderror
-                        </div>
-                        <div class="form-group">
-                            <label for="date_of_birth">Date of Birth</label>
+                            <label for="date_of_birth"><span class="text-danger">*</span> Date of Birth</label>
                             <input id="date_of_birth" type="date" name="date_of_birth" class="form-control @error('date_of_birth') is-invalid @enderror" placeholder="Blood Group" value="{{auth()->user()->date_of_birth ? auth()->user()->date_of_birth->format('Y-m-d') : old('date_of_birth')}}">
                             @error('date_of_birth')
                             <span class="invalid-feedback" role="alert">
@@ -73,7 +81,7 @@
                             @enderror
                         </div>
                         <div class="form-group">
-                            <label for="phone">Phone</label>
+                            <label for="phone"><span class="text-danger">*</span> Phone</label>
                             <input id="phone" type="text" name="phone" class="form-control @error('phone') is-invalid @enderror" placeholder="Phone" value="{{auth()->user()->phone ?? old('phone')}}">
                             @error('phone')
                             <span class="invalid-feedback" role="alert">

@@ -40,7 +40,7 @@
                     <td>{{$item->frequency}}</td>
                     <td>{{$item->prescriber}}</td>
                     @endif
-                    <td>{{$item->updated_at->format('d-m-Y H:i:s')}}</td>
+                    <td>{{$item->updated_at->format('m/d/Y g:i A')}}</td>
                     <td>
                         <div class="d-flex">
                             <a href="{{ auth()->user()->role_id == 1 ? route('admin.medications.show',$item->id) : route('user.medications.show',$item->id)}}">
