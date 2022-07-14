@@ -17,7 +17,7 @@ class SubscriptionMiddleware
     public function handle(Request $request, Closure $next)
     {
         if (!auth()->user()->subscription) {
-            return redirect()->route('subscription')->with('error', 'No commitment, Cancel anytime.');
+            return redirect()->route('subscription');
         }
         return $next($request);
     }

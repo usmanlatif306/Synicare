@@ -19,6 +19,9 @@
                         {{ session('error') }}
                     </div>
                     @endif
+                    <div class="alert alert-success" role="alert">
+                        Enter payment information to subscribe for $4.99/month.
+                    </div>
                     @if($subscription)
                     <div class="alert alert-info" role="alert">
                         You have {{$subscription->expired_at->diffInDays(now())}} days left in your subscrition. If you
@@ -26,8 +29,7 @@
                         next subscription
                     </div>
                     @endif
-                    <span class="text-primary font-weight-bold">You will be charged
-                        ${{env('SUBSCRIPTION_PRICE')}} /month</span>
+                    <small class="text-primary">Subscription automatically renews each month. No commitments, cancel anytime.</small>
                     <form class="mt-3" action="{{route('subscription.save')}}" method="POST" id="paymentForm" data-cc-on-file="false" data-stripe-publishable-key="{{ env('STRIPE_KEY') }}">
                         @csrf
                         <input type="hidden" name="price" value="{{env('SUBSCRIPTION_PRICE')}}" />

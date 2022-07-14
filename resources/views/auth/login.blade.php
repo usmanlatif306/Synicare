@@ -29,7 +29,7 @@
                 Password
             </span>
 
-            <a href="{{route('passwords.forget')}}" class="txt2 bo1 m-l-5">
+            <a href="{{route('passwords.forget')}}" class="txt2 bo1 m-l-5 text-black">
                 Forgot?
             </a>
         </div>
