@@ -21,7 +21,7 @@
                     <th scope="row">{{$loop->iteration}}</th>
 
                     <td>{{$item->name()}}</td>
-                    <td>${{$item->email}}</td>
+                    <td>{{$item->email}}</td>
                     <td>
                         <a class="text-primary cursor-pointer font-m mr-3 decoration-none" href="{{ route('admin.user.subscriptions',$item->id) }}" title="View Subscriptions">
                             <i class="fas fa-eye"></i>
