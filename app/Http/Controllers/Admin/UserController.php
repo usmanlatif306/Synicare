@@ -136,4 +136,20 @@ class UserController extends Controller
 
         return redirect()->back()->with('success', 'User Deleted Successfully');
     }
+
+    // users subscriptions
+    public function subscriptions(User $user)
+    {
+        $invoices = $user->invoices();
+        return view('admin.subscriptions.show', compact('invoices', 'user'));
+    }
+
+    // download invoice
+    public function download(User $user, $id)
+    {
+        return $user->downloadInvoice($id, [
+            'vendor' => config('app.name'),
+            'product' => auth()->user()->subscription()
+        ]);
+    }
 }

@@ -85,44 +85,6 @@
 
         </div>
 
-        <!-- user subscriptions -->
-        <div class="col-md-12 mt-4">
-            <div class="card">
-                <div class="card-header">
-                    <h4>User Subscriptions</h4>
-                </div>
-                <div class="card-body">
-                    <div class="table-responsive">
-                        <table class="table">
-                            <thead class="thead-synicare">
-                                <tr>
-                                    <th scope="col">No</th>
-                                    <th scope="col">Payment Id</th>
-                                    <th scope="col">Amount</th>
-                                    <th scope="col">Expired Date</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                @forelse($user->subscriptions as $item)
-                                <tr>
-                                    <th scope="row">{{$loop->iteration}}</th>
-                                    <td>{{$item->stripe_id}}</td>
-                                    <td>${{$item->amount}}</td>
-                                    <td>{{$item->expired_at->format('d-m-y H:i:s')}}</td>
-                                </tr>
-                                @empty
-                                <tr>
-                                    <td colspan="4">No Data</td>
-                                </tr>
-                                @endforelse
-
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-            </div>
-
-        </div>
 
     </div>
 </div>

@@ -2,6 +2,7 @@
 
 namespace App\Http\Middleware;
 
+use App\Models\Plan;
 use Closure;
 use Illuminate\Http\Request;
 
@@ -16,7 +17,13 @@ class SubscriptionMiddleware
      */
     public function handle(Request $request, Closure $next)
     {
-        if (!auth()->user()->subscription) {
+        $plan = Plan::first();
+        if ($plan) {
+            $subscription = $plan->stripe_name;
+        } else {
+            $subscription = 'default';
+        }
+        if ($request->user() && !$request->user()->subscribed($subscription)) {
             return redirect()->route('subscription');
         }
         return $next($request);

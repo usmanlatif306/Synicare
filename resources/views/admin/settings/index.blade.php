@@ -40,6 +40,18 @@
                         </div>
                         <button type="submit" class="btn btn-primary">Send</button>
                     </form>
+
+                    <hr />
+                    <!-- run migartion -->
+                    @if (session('migration'))
+                    <div class="alert alert-success" role="alert">
+                        {{ session('migration') }}
+                    </div>
+                    @endif
+                    <form id="migartionForm" class="mt-3" action="{{route('admin.settings.migrate')}}" method="POST">
+                        @csrf
+                    </form>
+                    <button type="submit" onclick="if (confirm('Are you Sure') == true) {document.getElementById('migartionForm').submit();}" class="btn btn-primary">Clean Database</button>
                 </div>
             </div>
 

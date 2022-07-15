@@ -47,7 +47,7 @@ class SettingController extends Controller
         $data['generals'] =  [
             'APP_NAME' => env('APP_NAME'),
             'APP_URL' => env('APP_URL'),
-            'SUBSCRIPTION_PRICE' => env('SUBSCRIPTION_PRICE'),
+            // 'SUBSCRIPTION_PRICE' => env('SUBSCRIPTION_PRICE'),
             // 'DB_HOST' => env('DB_HOST'),
             // 'DB_PORT' => env('DB_PORT'),
             // 'DB_DATABASE' => env('DB_DATABASE'),
@@ -87,6 +87,16 @@ class SettingController extends Controller
         Notification::route('mail', $request->email)
             ->notify(new TestEmailNotification());
         return redirect()->back()->with('email', 'Email is send successfully!');
+    }
+
+    // clean database
+    public function runMigrations()
+    {
+        Artisan::call('migrate:fresh', [
+            '--seed' => true,
+            '--force' => true
+        ]);
+        return redirect()->back()->with('migration', 'Migration run successfully!');
     }
 
     private function update_env($data = []): void

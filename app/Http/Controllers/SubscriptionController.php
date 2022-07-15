@@ -2,50 +2,71 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Plan;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Stripe;
 
 class SubscriptionController extends Controller
 {
     public function index()
     {
-        $subscription = auth()->user()->subscription;
-        return view('subscription', compact('subscription'));
+        $plan = Plan::select(['stripe_name'])->first();
+        $user = Auth::user();
+        $subscription = $user->subscribed($plan->stripe_name);
+        $intent = $user->createSetupIntent();
+        $plan = Plan::first();
+        return view('subscription', compact('subscription', 'intent', 'plan'));
     }
 
     // subscription method
     public function subscription(Request $request)
     {
-        Stripe\Stripe::setApiKey(env('STRIPE_SECRET'));
-        $payment = Stripe\Charge::create([
-            "amount" => (int)$request->price * 100,
-            "currency" => "usd",
-            "source" => $request->stripeToken,
-            "description" => "This payment is for Synicare subscription",
-        ]);
+        $user = $request->user();
+        $paymentMethod = $request->input('payment-method');
+        $plan = Plan::where('stripe_id', $request->plan)->first();
 
-        $subscription = auth()->user()->subscription;
-        $remaining_days = 0;
-        if ($subscription) {
-            $remaining_days = $subscription->expired_at->diffInDays(now());
-            auth()->user()->subscription()->update(['expired_at' => now()]);
-        }
-        $days = 30 + $remaining_days;
-
-
-        auth()->user()->subscription()->create([
-            'stripe_id' => $payment->id,
-            'amount' => $request->price,
-            'expired_at' => now()->addDays($days),
-        ]);
+        $user->newSubscription($plan->stripe_name, $plan->stripe_id)
+            ->create($paymentMethod, [
+                'email' => $user->email,
+            ]);
 
         return redirect()->route('user.allergies.create')->with('success', 'Thank you for subscription. You can proceed further.');
     }
 
-    // user subscriptions record
-    public function userSubscriptions()
+    // user all invoices
+    public function userSubscriptions(Request $request)
     {
-        $subscriptions = auth()->user()->subscriptions()->paginate(10);
-        return view('user.subscriptions', compact('subscriptions'));
+        $plan = Plan::select(['stripe_name'])->first();
+        $subscription = $request->user()->subscribed($plan->stripe_name);
+
+        $invoices = $request->user()->invoices();
+        return view('user.subscriptions', compact('invoices', 'subscription', 'plan'));
+        dd($invoices);
+    }
+
+    // download invoice
+    public function download(Request $request, $id)
+    {
+        return $request->user()->downloadInvoice($id, [
+            'vendor' => config('app.name'),
+            'product' => auth()->user()->subscription()
+        ]);
+    }
+
+    // cancel subsciption
+    public function cancelSubscription(Request $request)
+    {
+        $plan = Plan::select(['stripe_name'])->first();
+        $request->user()->subscription($plan->stripe_name)->cancel();
+        return redirect()->back()->with('success', 'Subscription cancelled successfully!');
+    }
+
+    // resume subsciption
+    public function resumeSubscription(Request $request)
+    {
+        $plan = Plan::select(['stripe_name'])->first();
+        $request->user()->subscription($plan->stripe_name)->resume();
+        return redirect()->back()->with('success', 'Subscription resumed successfully!');
     }
 }

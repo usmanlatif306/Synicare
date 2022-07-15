@@ -7,10 +7,11 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
+use Laravel\Cashier\Billable;
 
 class User extends Authenticatable
 {
-    use HasApiTokens, HasFactory, Notifiable;
+    use HasApiTokens, HasFactory, Notifiable, Billable;
 
     /**
      * The attributes that are mass assignable.
@@ -18,7 +19,7 @@ class User extends Authenticatable
      * @var array<int, string>
      */
     protected $fillable = [
-        'first_name', 'last_name', 'email', 'password', 'phone', 'address', 'date_of_birth', 'image'
+        'first_name', 'last_name', 'name', 'email', 'password', 'phone', 'address', 'date_of_birth', 'image'
     ];
 
     /**
@@ -63,17 +64,5 @@ class User extends Authenticatable
     public function appointments()
     {
         return $this->hasMany(Appointment::class)->latest();
-    }
-
-    // user active subscription
-    public function subscription()
-    {
-        return $this->hasOne(Subscription::class)->where('expired_at', '>=', now())->latest();
-    }
-
-    // user all subscriptions
-    public function subscriptions($search = "")
-    {
-        return $this->hasMany(Subscription::class)->latest();
     }
 }

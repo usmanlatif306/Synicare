@@ -3,6 +3,7 @@
 use App\Http\Controllers\Admin\AllergyController;
 use App\Http\Controllers\Admin\AppointmentController;
 use App\Http\Controllers\Admin\MedicationController;
+use App\Http\Controllers\Admin\PlanController;
 use App\Http\Controllers\Admin\SettingController;
 use App\Http\Controllers\Admin\SubscriptionController;
 use App\Http\Controllers\Admin\UserController as AdminUserController;
@@ -15,6 +16,9 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => 'admin'], f
 
     // admin users routes
     Route::resource('users', AdminUserController::class);
+    // users subscriptions
+    Route::get('user/{user}/subscriptions', [AdminUserController::class, 'subscriptions'])->name('user.subscriptions');
+    Route::get('user/{user}/subscription/download/{id}', [AdminUserController::class, 'download'])->name('user.subscription.download');
 
     // admin allergies routes
     Route::resource('allergies', AllergyController::class);
@@ -26,7 +30,8 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => 'admin'], f
     // admin appointments routes
     Route::resource('appointments', AppointmentController::class);
 
-
+    // admin plans routes
+    Route::resource('plans', PlanController::class);
 
     // user subscriptions
     Route::view('subscriptions', 'admin.subscriptions.index')->name('subscription');
@@ -35,4 +40,5 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => 'admin'], f
     Route::get('/settings', [SettingController::class, 'index'])->name('settings');
     Route::post('/settings/general', [SettingController::class, 'updateGeneral'])->name('settings.general');
     Route::post('/settings/email', [SettingController::class, 'testEmail'])->name('settings.email');
+    Route::post('/settings/migartion', [SettingController::class, 'runMigrations'])->name('settings.migrate');
 });

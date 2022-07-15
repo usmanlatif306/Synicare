@@ -26,6 +26,12 @@
             </a>
         </li>
         <li class="nav-item">
+            <a class="nav-link" href="{{route('admin.plans.index')}}">
+                <i class="icon-grid menu-icon"></i>
+                <span class="menu-title">Plans</span>
+            </a>
+        </li>
+        <li class="nav-item">
             <a class="nav-link" href="{{route('admin.subscription')}}">
                 <i class="icon-grid menu-icon"></i>
                 <span class="menu-title">Subscriptions</span>

@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class AddLastNameFiledInUsersTable extends Migration
+class AddProductIdToPlansTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,8 @@ class AddLastNameFiledInUsersTable extends Migration
      */
     public function up()
     {
-        Schema::table('users', function (Blueprint $table) {
-            $table->string('last_name')->after('first_name');
+        Schema::table('plans', function (Blueprint $table) {
+            $table->string('product_id')->after('stripe_id');
         });
     }
 
@@ -25,7 +25,7 @@ class AddLastNameFiledInUsersTable extends Migration
      */
     public function down()
     {
-        Schema::table('users', function (Blueprint $table) {
+        Schema::table('plans', function (Blueprint $table) {
             //
         });
     }

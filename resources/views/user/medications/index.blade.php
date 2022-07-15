@@ -16,12 +16,6 @@
         <div class="card-body">
             <div class="row">
                 <div class="col-12">
-                    <!-- @if($subscription && $subscription->expired_at->subDays(8)->lessThan(now()))
-                    <div class="alert alert-danger">
-                        Your subscription will expired after {{$subscription->expired_at->diffInDays(now())}} days.
-                        kindly <a class="text-danger" href="{{route('subscription')}}">recharge</a> it.
-                    </div>
-                    @endif -->
                     @if (session('success'))
                     <div class="alert alert-success" role="alert">
                         {{ session('success') }}

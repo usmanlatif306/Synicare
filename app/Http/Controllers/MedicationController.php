@@ -17,8 +17,7 @@ class MedicationController extends Controller
      */
     public function index()
     {
-        $subscription = auth()->user()->subscription;
-        return view('user.medications.index', compact('subscription'));
+        return view('user.medications.index');
     }
 
     /**
