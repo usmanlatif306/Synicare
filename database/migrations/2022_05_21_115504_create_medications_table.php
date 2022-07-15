@@ -15,8 +15,8 @@ class CreateMedicationsTable extends Migration
     {
         Schema::create('medications', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id')->constrained()->onDelete('cascade');
-            $table->string('allergies');
+            // $table->foreignId('user_id')->constrained()->onDelete('cascade');
+            // $table->string('allergies');
             $table->string('medication');
             $table->string('doze');
             $table->string('frequency');

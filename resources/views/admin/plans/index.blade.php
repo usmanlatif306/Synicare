@@ -33,8 +33,7 @@
                                     <td>${{$item->price}}</td>
                                     <td>
                                         <div class="d-flex justify-content-center">
-
-                                            <a href="{{route('admin.plans.edit',$item->slug)}}" class="text-primary cursor-pointer font-m mr-3" title="Edit Plan"><i class=" fas fa-edit"></i></a>
+                                            <!-- <a href="{{route('admin.plans.edit',$item->slug)}}" class="text-primary cursor-pointer font-m mr-3" title="Edit Plan"><i class=" fas fa-edit"></i></a> -->
                                             <form id="deletePlan-{{$item->id}}" action="{{route('admin.plans.destroy',$item->slug)}}" method="POST">
                                                 @csrf
                                                 @method('delete')

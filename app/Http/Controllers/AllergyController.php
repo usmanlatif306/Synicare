@@ -14,8 +14,7 @@ class AllergyController extends Controller
      */
     public function index()
     {
-        $subscription = auth()->user()->subscription;
-        return view('user.allergies.index', compact('subscription'));
+        return view('user.allergies.index');
     }
 
     /**

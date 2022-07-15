@@ -4,13 +4,7 @@
         <div class="col-md-6">
             <input type="text" class="form-control" wire:model="searchTerm" placeholder="Search Medications">
         </div>
-        <!-- <div class="col-12 mt-3 text-center">
-            <h4 class="text-center">Allergies: </h4>
-            <p>{{auth()->user()->allergy->allergies}}</p>
-        </div>
-        <div class="col-12">
-            <h4 class="text-center">My Home Medications List</h4>
-        </div> -->
+
     </div>
     <!-- allergies list -->
     <div class="table-responsive mt-3">
