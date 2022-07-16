@@ -29,7 +29,7 @@
                                     <td>{{ $item->date()->toFormattedDateString() }}</td>
                                     <td>{{ $item->total() }}</td>
                                     <td>
-                                        <a href="{{route('admin.user.subscription.download',[$user->id,$item->id])}}" class="btn btn-sm btn-primary">Download</a>
+                                        <a href="{{route('admin.user.subscription.download',[$user->id,$item->id])}}" class="btn btn-sm btn-primary">Download Invoice</a>
                                     </td>
                                 </tr>
                                 @empty

@@ -2,6 +2,7 @@
 
 namespace App\Http\Livewire;
 
+use App\Models\Plan;
 use App\Models\Subscription;
 use App\Models\User;
 use Livewire\Component;
@@ -21,7 +22,8 @@ class UserSubscription extends Component
                 $query->where('first_name', 'like', $searchTerm)
                     ->orWhere('email', 'like', $searchTerm)
                     ->orWhere('last_name', 'like', $searchTerm);
-            })->select(['id', 'first_name', 'last_name', 'email', 'phone'])->paginate(10)
+            })->select(['id', 'first_name', 'last_name', 'email', 'phone'])->paginate(10),
+            'plan' => Plan::select(['stripe_name'])->first()
         ]);
     }
 }

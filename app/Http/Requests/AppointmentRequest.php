@@ -25,7 +25,7 @@ class AppointmentRequest extends FormRequest
     {
         return [
             'consultant' => ['required', 'string'],
-            'details' => ['required', 'string'],
+            'details' => ['nullable', 'string'],
             'due' => ['required'],
             // , 'after:now'
         ];

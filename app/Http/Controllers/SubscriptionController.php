@@ -31,7 +31,7 @@ class SubscriptionController extends Controller
                 'email' => $user->email,
             ]);
 
-        return redirect()->route('user.allergies.create')->with('success', 'Thank you for subscription. You can proceed further.');
+        return redirect()->route('user.allergies.create')->with('success', 'Thank you for subscribing.');
     }
 
     // user all invoices

@@ -41,9 +41,9 @@ class AllergyController extends Controller
             'allergies' => ['required', 'string']
         ]);
 
-        auth()->user()->allergies()->create($request->only('allergies'));
+        auth()->user()->allergy()->create($request->only('allergies'));
 
-        return redirect()->route('admin.allergies.index')->with('success', 'Allergy created successfully!');
+        return redirect()->route('admin.medications.index')->with('success', 'Allergy created successfully!');
     }
 
     /**

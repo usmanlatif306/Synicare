@@ -42,16 +42,34 @@
                     </form>
 
                     <hr />
-                    <!-- run migartion -->
-                    @if (session('migration'))
+                    @if (session('setting'))
                     <div class="alert alert-success" role="alert">
-                        {{ session('migration') }}
+                        {{ session('setting') }}
                     </div>
                     @endif
-                    <form id="migartionForm" class="mt-3" action="{{route('admin.settings.migrate')}}" method="POST">
-                        @csrf
-                    </form>
-                    <button type="submit" onclick="if (confirm('Are you Sure') == true) {document.getElementById('migartionForm').submit();}" class="btn btn-primary">Clean Database</button>
+                    <div class="d-flex">
+                        <!-- storage link -->
+                        <form id="storageForm" class="mt-3" action="{{route('admin.settings.storage')}}" method="POST">
+                            @csrf
+                        </form>
+                        <button type="submit" onclick="if (confirm('Are you Sure') == true) {document.getElementById('storageForm').submit();}" class="btn btn-primary mr-3">Storge Link</button>
+
+                        <!-- clear config -->
+                        <form id="clearConfig" class="mt-3" action="{{route('admin.settings.config')}}" method="POST">
+                            @csrf
+                        </form>
+                        <button type="submit" onclick="if (confirm('Are you Sure') == true) {document.getElementById('clearConfig').submit();}" class="btn btn-primary mr-3">Clean Config</button>
+
+                        <!-- run migartion -->
+                        <form id="migartionForm" class="mt-3" action="{{route('admin.settings.migrate')}}" method="POST">
+                            @csrf
+                        </form>
+                        <button type="submit" onclick="if (confirm('Are you Sure') == true) {document.getElementById('migartionForm').submit();}" class="btn btn-primary">Clean Database</button>
+
+
+                    </div>
+
+
                 </div>
             </div>
 

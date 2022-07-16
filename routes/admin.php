@@ -41,4 +41,6 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => 'admin'], f
     Route::post('/settings/general', [SettingController::class, 'updateGeneral'])->name('settings.general');
     Route::post('/settings/email', [SettingController::class, 'testEmail'])->name('settings.email');
     Route::post('/settings/migartion', [SettingController::class, 'runMigrations'])->name('settings.migrate');
+    Route::post('/settings/storage', [SettingController::class, 'storageLink'])->name('settings.storage');
+    Route::post('/settings/config', [SettingController::class, 'configClear'])->name('settings.config');
 });

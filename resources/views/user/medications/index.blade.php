@@ -23,8 +23,8 @@
                     @endif
                     @if(auth()->user()->allergy)
                     <div class="row">
-                        <div class="col-12 mt-3 text-center">
-                            <h4 class="text-center">Allergies: </h4>
+                        <div class="col-12 mt-3 text-center mb-3">
+                            <h4 class="text-center">Please Enter Allergies below or Null: </h4>
                             <p style="font-size: 16px;">
                                 {{ auth()->user()->allergy->allergies}}
                                 <a title="Edit Allergy" class="ml-1 text-primary" style="font-size: 12px;" href="{{route('user.allergies.edit',auth()->user()->allergy->id)}}">
@@ -33,7 +33,7 @@
                                 </a>
                             </p>
                         </div>
-                        <div class=" col-12">
+                        <div class="col-12">
                             <h4 class="text-center">My Home Medication List</h4>
                         </div>
                     </div>

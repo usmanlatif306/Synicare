@@ -96,7 +96,19 @@ class SettingController extends Controller
             '--seed' => true,
             '--force' => true
         ]);
-        return redirect()->back()->with('migration', 'Migration run successfully!');
+        return redirect()->back()->with('setting', 'Migration run successfully!');
+    }
+    // clean database
+    public function storageLink()
+    {
+        Artisan::call('storage:link');
+        return redirect()->back()->with('setting', 'Storage link created successfully!');
+    }
+    // clean database
+    public function configClear()
+    {
+        Artisan::call('config:clear');
+        return redirect()->back()->with('setting', 'Config clear successfully!');
     }
 
     private function update_env($data = []): void

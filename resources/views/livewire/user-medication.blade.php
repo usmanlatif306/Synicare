@@ -1,11 +1,11 @@
 <div class="mt-3">
-    <div class="row">
+    <!-- <div class="row">
         <div class="col-md-6"></div>
         <div class="col-md-6">
             <input type="text" class="form-control" wire:model="searchTerm" placeholder="Search Medications">
         </div>
 
-    </div>
+    </div> -->
     <!-- allergies list -->
     <div class="table-responsive mt-3">
         <table class="table">
@@ -24,6 +24,7 @@
                 </tr>
             </thead>
             <tbody>
+
                 @forelse($medications as $item)
                 <tr>
                     @if(auth()->user()->role_id == 1)
