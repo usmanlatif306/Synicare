@@ -19,7 +19,7 @@
             <tbody>
                 @forelse($subscriptions as $item)
                 <tr>
-                    <th scope="row">{{$loop->iteration}}</th>
+                    <th scope="row">{{ ($subscriptions->currentpage()-1) * $subscriptions->perpage() + $loop->iteration }}</th>
 
                     <td>{{$item->name()}}</td>
                     <td>{{$item->email}}</td>

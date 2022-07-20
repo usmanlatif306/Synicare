@@ -17,38 +17,69 @@
             <div class="row">
                 <div class="col-md-3 mb-4 stretch-card transparent">
                     <div class="card card-tale">
-                        <div class="card-body">
-                            <p class="mb-4">Number Of Patients</p>
-                            <p class="fs-30 mb-2">{{$data['total_users']}}</p>
-                            <p>{{$data['30days_user_percentage']}}% (30 days)</p>
-                        </div>
+                        <a href="{{route('admin.users.index')}}">
+                            <div class="card-body">
+                                <p class="mb-4">Number Of Patients</p>
+                                <p class="fs-30 mb-2">{{$data['total_users']}}</p>
+                                <p>{{$data['30days_user_percentage']}}% (30 days)</p>
+                            </div>
+                        </a>
+
                     </div>
                 </div>
                 <div class="col-md-3 mb-4 stretch-card transparent">
-                    <div class="card card-dark-blue">
-                        <div class="card-body">
-                            <p class="mb-4">Today's Patients</p>
-                            <p class="fs-30 mb-2">{{$data['today_users']}}</p>
-                            <p>{{$data['today_users_percentage']}}% (30 days)</p>
-                        </div>
+                    <div class="card card-light-blue">
+                        <a href="{{route('admin.users.index')}}">
+                            <div class="card-body">
+                                <p class="mb-4">Today's Patients</p>
+                                <p class="fs-30 mb-2">{{$data['today_users']}}</p>
+                                <p>{{$data['today_users_percentage']}}% (30 days)</p>
+                            </div>
+                        </a>
                     </div>
                 </div>
                 <div class="col-md-3 mb-4 mb-lg-0 transparent">
-                    <div class="card card-light-blue">
-                        <div class="card-body">
-                            <p class="mb-4">Number of Medications</p>
-                            <p class="fs-30 mb-2">{{$data['total_medications']}}</p>
-                            <p>{{$data['30_days_medications_percentage']}}% (30 days)</p>
-                        </div>
+                    <div class="card card-tale">
+                        <a href="{{route('admin.medications.index')}}">
+                            <div class="card-body">
+                                <p class="mb-4">Number of Medications</p>
+                                <p class="fs-30 mb-2">{{$data['total_medications']}}</p>
+                                <p>{{$data['30_days_medications_percentage']}}% (30 days)</p>
+                            </div>
+                        </a>
                     </div>
                 </div>
                 <div class="col-md-3 transparent">
-                    <div class="card card-light-danger">
-                        <div class="card-body">
-                            <p class="mb-4">Today's Medications</p>
-                            <p class="fs-30 mb-2">{{$data['today_medications']}}</p>
-                            <p>{{$data['today_medications_percentage']}}% (30 days)</p>
-                        </div>
+                    <div class="card card-light-blue">
+                        <a href="{{route('admin.medications.index')}}">
+                            <div class="card-body">
+                                <p class="mb-4">Number of Medications</p>
+                                <p class="fs-30 mb-2">{{$data['today_medications']}}</p>
+                                <p>{{$data['today_medications_percentage']}}% (30 days)</p>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                <div class="col-md-3 transparent">
+                    <div class="card card-tale">
+                        <a href="{{route('admin.appointments.index')}}">
+                            <div class="card-body">
+                                <p class="mb-4">Number of Appointments</p>
+                                <p class="fs-30 mb-2">{{$data['total_appointments']}}</p>
+                                <p>{{$data['30_days_appointments_percentage']}}% (30 days)</p>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                <div class="col-md-3 transparent">
+                    <div class="card card-light-blue">
+                        <a href="{{route('admin.appointments.index')}}">
+                            <div class="card-body">
+                                <p class="mb-4">Today's Appointments</p>
+                                <p class="fs-30 mb-2">{{$data['today_appointments']}}</p>
+                                <p>{{$data['today_appointments_percentage']}}% (30 days)</p>
+                            </div>
+                        </a>
                     </div>
                 </div>
             </div>

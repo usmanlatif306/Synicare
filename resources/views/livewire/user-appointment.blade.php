@@ -12,6 +12,7 @@
                     @if(auth()->user()->role_id == 1)
                     <th scope="col">User</th>
                     <th scope="col">Latest Appointment Date</th>
+                    <th scope="col">Latest Appointment Creation Date</th>
                     @else
                     <th scope="col">Specialist</th>
                     <th scope="col">Date</th>
@@ -28,10 +29,14 @@
                 <tr>
                     @if(auth()->user()->role_id == 1)
                     <td>{{$item->name()}}</td>
-                    <td>{{$item->appointments()->select(['due'])->first()->due}}</td>
+                    @php
+                    $appointment = $item->appointments()->select(['due','created_at'])->first();
+                    @endphp
+                    <td>{{$appointment->due->format('m/d/Y H:i')}}</td>
+                    <td>{{$appointment->created_at->format('m/d/Y H:i')}}</td>
                     @else
                     <td>{{$item->consultant}}</td>
-                    <td>{{$item->due->format('m/d/Y')}}</td>
+                    <td>{{$item->due->format('m/d/Y H:i')}}</td>
                     @endif
                     <td>
                         <div class="d-flex justify-content-center">

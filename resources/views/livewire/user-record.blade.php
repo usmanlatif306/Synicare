@@ -19,7 +19,7 @@
             <tbody>
                 @forelse($users as $user)
                 <tr>
-                    <th scope="row">{{$loop->iteration}}</th>
+                    <th scope="row">{{ ($users->currentpage()-1) * $users->perpage() + $loop->index + 1 }}</th>
                     <td>{{$user->name()}}</td>
                     <td>{{$user->email}}</td>
                     <td>{{$user->phone}}</td>

@@ -21,9 +21,10 @@
                                 <tr>
                                     <th scope="col">No</th>
                                     <th scope="col">Phone</th>
-                                    <th scope="col">Consultant</th>
+                                    <th scope="col">Specialist</th>
                                     <th scope="col">Details</th>
-                                    <th scope="col">Due</th>
+                                    <th scope="col">Date</th>
+                                    <th scope="col">Created At</th>
                                     <th scope="col"></th>
                                 </tr>
                             </thead>
@@ -34,7 +35,8 @@
                                     <td>{{$item->user->phone}}</td>
                                     <td>{{$item->consultant}}</td>
                                     <td>{{$item->details}}</td>
-                                    <td>{{$item->due}}</td>
+                                    <td>{{$item->due->format('m/d/Y H:i')}}</td>
+                                    <td>{{$item->created_at->format('m/d/Y H:i')}}</td>
                                     <td>
                                         <div class="d-flex">
                                             <a href="{{ auth()->user()->role_id == 1 ? route('admin.appointments.edit',$item->id) : route('user.appointments.edit',$item->id)}}" class="text-primary cursor-pointer font-m mr-3" title="Edit Appointment"><i class=" fas fa-edit"></i></a>

@@ -29,6 +29,7 @@ input[type="number"] {
 .btn-primary,
 .btn-synicare:hover,
 .btn-primary:hover,
+.btn-primary:disabled,
 .pagination .page-item.active .page-link,
 .pagination .page-item .page-link:hover {
     color: #fff;
@@ -57,5 +58,9 @@ input[type="number"] {
 }
 .table .thead-synicare th {
     background-color: #3a8abd !important;
+    color: #fff;
+}
+.card a {
+    text-decoration: none;
     color: #fff;
 }

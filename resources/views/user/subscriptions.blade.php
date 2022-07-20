@@ -21,7 +21,7 @@
                     </div>
                     @else
                     <div class="alert alert-success" role="alert">
-                        Your subsription will end on {{request()->user()->subscription($plan->stripe_name)->ends_at->format('m/d/Y')}}. <a href="{{route('user.subscription.resume')}}" class="text-primary"> Resume Subscription</a>
+                        Your subscription will end on {{request()->user()->subscription($plan->stripe_name)->ends_at->format('m/d/Y')}}. <a href="{{route('user.subscription.resume')}}" class="text-primary"> Resume Subscription</a>
                     </div>
                     @endif
                     @endif

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Appointment;
 use App\Models\Medication;
 use App\Models\User;
 use App\Notifications\TestEmailNotification;
@@ -30,6 +31,12 @@ class SettingController extends Controller
         $data['30_days_medications_percentage'] = $this->Percentage($data['30_days_medications'], $data['total_medications']);
         $data['today_medications'] = Medication::where('created_at', '>=', today())->count();
         $data['today_medications_percentage'] = $this->Percentage($data['today_medications'], $data['30_days_medications']);
+        // appointment history
+        $data['total_appointments'] = Appointment::count();
+        $data['30_days_appointments'] = Appointment::where('created_at', '>=', now()->subDays(30))->count();
+        $data['30_days_appointments_percentage'] = $this->Percentage($data['30_days_appointments'], $data['total_appointments']);
+        $data['today_appointments'] = Appointment::where('created_at', '>=', today())->count();
+        $data['today_appointments_percentage'] = $this->Percentage($data['today_appointments'], $data['30_days_appointments']);
 
         // top 5 users
         $data['users'] = User::where('role_id', 0)->latest()->limit(5)->get(['first_name', 'last_name', 'email', 'phone', 'date_of_birth']);

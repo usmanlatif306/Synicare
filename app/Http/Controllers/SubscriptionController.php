@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Plan;
+use App\Notifications\SubscritionCancelNotification;
+use App\Notifications\SubscritionNotification;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Stripe;
@@ -30,6 +32,8 @@ class SubscriptionController extends Controller
             ->create($paymentMethod, [
                 'email' => $user->email,
             ]);
+
+        $user->notify(new SubscritionNotification());
 
         return redirect()->route('user.allergies.create')->with('success', 'Thank you for subscribing.');
     }
@@ -59,6 +63,7 @@ class SubscriptionController extends Controller
     {
         $plan = Plan::select(['stripe_name'])->first();
         $request->user()->subscription($plan->stripe_name)->cancel();
+        $request->user()->notify(new SubscritionCancelNotification());
         return redirect()->back()->with('success', 'Subscription cancelled successfully!');
     }
 

@@ -98,6 +98,8 @@
 
     paymentForm.addEventListener('submit', async (e) => {
         e.preventDefault();
+        cardButton.innerHTML = "<i class='fas fa-circle-notch fa-spin'></i>";
+        cardButton.setAttribute('disabled', '');
         displayError.textContent = '';
         const {
             setupIntent,
@@ -115,10 +117,10 @@
 
         if (error) {
             // Display "error.message" to the user...
+            cardButton.removeAttribute('disabled');
             displayError.textContent = error.message
         } else {
             // The card has been verified successfully...
-
             const paymentMethodInput = document.getElementById('payment-method');
             paymentMethodInput.value = setupIntent.payment_method;
             paymentForm.submit();
