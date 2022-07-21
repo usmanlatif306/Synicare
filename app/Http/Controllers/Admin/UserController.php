@@ -129,7 +129,10 @@ class UserController extends Controller
      */
     public function destroy(User $user)
     {
-        $user->medications()->delete();
+        if ($user->allergy) {
+            $user->allergy->medications()->delete();
+            $user->allergy()->delete();
+        }
         $user->appointments()->delete();
         $user->subscriptions()->delete();
         $user->delete();
